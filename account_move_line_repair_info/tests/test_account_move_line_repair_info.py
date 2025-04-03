@@ -3,18 +3,21 @@
 # flake8: noqa: B950
 
 from odoo import fields
+from odoo.tests import tagged
 from odoo.tests.common import TransactionCase
 
 
+@tagged("post_install", "-at_install")
 class TestAccountMoveLineRepairInfo(TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.aml_model = self.env["account.move.line"]
-        self.am_model = self.env["account.move"]
-        self.chart_template = self.env["account.chart.template"].create(
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.aml_model = cls.env["account.move.line"]
+        cls.am_model = cls.env["account.move"]
+        cls.chart_template = cls.env["account.chart.template"].create(
             {
                 "name": "Test chart",
-                "currency_id": self.env.ref("base.EUR").id,
+                "currency_id": cls.env.ref("base.EUR").id,
                 "code_digits": 6,
                 "cash_account_code_prefix": "570",
                 "bank_account_code_prefix": "572",
@@ -22,207 +25,216 @@ class TestAccountMoveLineRepairInfo(TransactionCase):
                 "use_anglo_saxon": True,
             }
         )
-        self.chart_template.try_loading(company=self.env.user.company_id)
-        self.valuation_account = self.env["account.account"].create(
+        cls.asset_type = cls.env.ref("account.data_account_type_current_assets")
+        cls.expense_type = cls.env.ref("account.data_account_type_expenses")
+        cls.liability_type = cls.env.ref(
+            "account.data_account_type_current_liabilities"
+        )
+        cls.revenue_type = cls.env.ref("account.data_account_type_other_income")
+        cls.equity_type = cls.env.ref("account.data_account_type_equity")
+        cls.receivable_type = cls.env.ref("account.data_account_type_receivable")
+        cls.payable_type = cls.env.ref("account.data_account_type_payable")
+
+        cls.valuation_account = cls.env["account.account"].create(
             {
                 "name": "Test stock valuation",
                 "code": "tv",
-                "account_type": "asset_cash",
+                "user_type_id": cls.asset_type.id,
                 "reconcile": True,
-                "company_id": self.env.ref("base.main_company").id,
+                "company_id": cls.env.ref("base.main_company").id,
             }
         )
-        self.payable_account = self.env["account.account"].create(
+        cls.payable_account = cls.env["account.account"].create(
             {
                 "name": "Test Payable",
                 "code": "tpayable",
-                "account_type": "liability_payable",
+                "user_type_id": cls.payable_type.id,
                 "reconcile": True,
-                "company_id": self.env.ref("base.main_company").id,
+                "company_id": cls.env.ref("base.main_company").id,
             }
         )
-        self.receivable_account = self.env["account.account"].create(
+        cls.receivable_account = cls.env["account.account"].create(
             {
                 "name": "Test Receivable",
                 "code": "treceivable",
-                "account_type": "asset_receivable",
+                "user_type_id": cls.receivable_type.id,
                 "reconcile": True,
-                "company_id": self.env.ref("base.main_company").id,
+                "company_id": cls.env.ref("base.main_company").id,
             }
         )
 
-        self.stock_input_account = self.env["account.account"].create(
+        cls.stock_input_account = cls.env["account.account"].create(
             {
                 "name": "Test stock input",
                 "code": "tsti",
-                "account_type": "income",
+                "user_type_id": cls.revenue_type.id,
                 "reconcile": True,
-                "company_id": self.env.ref("base.main_company").id,
+                "company_id": cls.env.ref("base.main_company").id,
             }
         )
-        self.stock_output_account = self.env["account.account"].create(
+        cls.stock_output_account = cls.env["account.account"].create(
             {
                 "name": "Test stock output",
                 "code": "tout",
-                "account_type": "equity",
+                "user_type_id": cls.liability_type.id,
                 "reconcile": True,
-                "company_id": self.env.ref("base.main_company").id,
+                "company_id": cls.env.ref("base.main_company").id,
             }
         )
-        self.stock_income_account = self.env["account.account"].create(
+        cls.stock_income_account = cls.env["account.account"].create(
             {
                 "name": "Test stock income",
                 "code": "tincome",
-                "account_type": "income",
+                "user_type_id": cls.revenue_type.id,
                 "reconcile": True,
-                "company_id": self.env.ref("base.main_company").id,
+                "company_id": cls.env.ref("base.main_company").id,
             }
         )
-        self.stock_expense_account = self.env["account.account"].create(
+        cls.stock_expense_account = cls.env["account.account"].create(
             {
                 "name": "Test stock outcome",
                 "code": "texpense",
-                "account_type": "expense",
+                "user_type_id": cls.expense_type.id,
                 "reconcile": True,
-                "company_id": self.env.ref("base.main_company").id,
+                "company_id": cls.env.ref("base.main_company").id,
             }
         )
-        self.stock_journal = self.env["account.journal"].create(
+        cls.stock_journal = cls.env["account.journal"].create(
             {"name": "Stock Journal", "code": "STJTEST", "type": "general"}
         )
-        self.categ_real = self.env["product.category"].create(
+        cls.categ_real = cls.env["product.category"].create(
             {
                 "name": "REAL",
                 "property_cost_method": "fifo",
                 "property_valuation": "real_time",
-                "property_stock_valuation_account_id": self.valuation_account.id,
-                "property_stock_account_input_categ_id": self.stock_input_account.id,
-                "property_stock_account_output_categ_id": self.stock_output_account.id,
-                "property_account_expense_categ_id": self.stock_expense_account.id,
-                "property_account_income_categ_id": self.stock_income_account.id,
-                "property_stock_journal": self.stock_journal.id,
+                "property_stock_valuation_account_id": cls.valuation_account.id,
+                "property_stock_account_input_categ_id": cls.stock_input_account.id,
+                "property_stock_account_output_categ_id": cls.stock_output_account.id,
+                "property_account_expense_categ_id": cls.stock_expense_account.id,
+                "property_account_income_categ_id": cls.stock_income_account.id,
+                "property_stock_journal": cls.stock_journal.id,
             }
         )
-        self.res_partner_1 = self.env["res.partner"].create(
+        cls.res_partner_1 = cls.env["res.partner"].create(
             {
                 "name": "Wood Corner",
-                "property_account_payable_id": self.payable_account.id,
-                "property_account_receivable_id": self.receivable_account.id,
+                "property_account_payable_id": cls.payable_account.id,
+                "property_account_receivable_id": cls.receivable_account.id,
             }
         )
-        self.res_partner_address_1 = self.env["res.partner"].create(
-            {"name": "Willie Burke", "parent_id": self.res_partner_1.id}
+        cls.res_partner_address_1 = cls.env["res.partner"].create(
+            {"name": "Willie Burke", "parent_id": cls.res_partner_1.id}
         )
-        self.res_partner_12 = self.env["res.partner"].create(
+        cls.res_partner_12 = cls.env["res.partner"].create(
             {
                 "name": "Partner 12",
-                "property_account_payable_id": self.payable_account.id,
-                "property_account_receivable_id": self.receivable_account.id,
+                "property_account_payable_id": cls.payable_account.id,
+                "property_account_receivable_id": cls.receivable_account.id,
             }
         )
 
         # Products
-        self.product_product_3 = self.env["product.product"].create(
+        cls.product_product_3 = cls.env["product.product"].create(
             {
                 "name": "Desk Combination",
-                "categ_id": self.categ_real.id,
+                "categ_id": cls.categ_real.id,
                 "standard_price": 1.0,
                 "type": "product",
             }
         )
-        self.product_product_11 = self.env["product.product"].create(
+        cls.product_product_11 = cls.env["product.product"].create(
             {
                 "name": "Conference Chair",
-                "categ_id": self.categ_real.id,
+                "categ_id": cls.categ_real.id,
                 "standard_price": 1.0,
                 "type": "product",
             }
         )
-        self.product_product_5 = self.env["product.product"].create(
+        cls.product_product_5 = cls.env["product.product"].create(
             {
                 "name": "Product 5",
-                "categ_id": self.categ_real.id,
+                "categ_id": cls.categ_real.id,
                 "standard_price": 1.0,
                 "type": "product",
             }
         )
-        self.product_product_6 = self.env["product.product"].create(
+        cls.product_product_6 = cls.env["product.product"].create(
             {
                 "name": "Large Cabinet",
-                "categ_id": self.categ_real.id,
+                "categ_id": cls.categ_real.id,
                 "standard_price": 1.0,
                 "type": "product",
             }
         )
-        self.product_product_12 = self.env["product.product"].create(
+        cls.product_product_12 = cls.env["product.product"].create(
             {
                 "name": "Office Chair Black",
-                "categ_id": self.categ_real.id,
+                "categ_id": cls.categ_real.id,
                 "standard_price": 1.0,
                 "type": "product",
             }
         )
-        self.product_product_13 = self.env["product.product"].create(
+        cls.product_product_13 = cls.env["product.product"].create(
             {
                 "name": "Corner Desk Left Sit",
-                "categ_id": self.categ_real.id,
+                "categ_id": cls.categ_real.id,
                 "standard_price": 1.0,
                 "type": "product",
             }
         )
-        self.product_product_2 = self.env["product.product"].create(
+        cls.product_product_2 = cls.env["product.product"].create(
             {
                 "name": "Virtual Home Staging",
-                "categ_id": self.categ_real.id,
+                "categ_id": cls.categ_real.id,
                 "standard_price": 1.0,
                 "type": "product",
             }
         )
-        self.product_service_order_repair = self.env["product.product"].create(
+        cls.product_service_order_repair = cls.env["product.product"].create(
             {
                 "name": "Repair Services",
                 "type": "service",
-                "categ_id": self.categ_real.id,
+                "categ_id": cls.categ_real.id,
             }
         )
 
         # Location
-        self.stock_warehouse = self.env["stock.warehouse"].search(
-            [("company_id", "=", self.env.company.id)], limit=1
+        cls.stock_warehouse = cls.env["stock.warehouse"].search(
+            [("company_id", "=", cls.env.company.id)], limit=1
         )
-        self.stock_location_14 = self.env["stock.location"].create(
+        cls.stock_location_14 = cls.env["stock.location"].create(
             {
                 "name": "Shelf 2",
-                "location_id": self.stock_warehouse.lot_stock_id.id,
+                "location_id": cls.stock_warehouse.lot_stock_id.id,
             }
         )
 
         # Repair Orders
-        self.repair1 = self.env["repair.order"].create(
+        cls.repair1 = cls.env["repair.order"].create(
             {
-                "address_id": self.res_partner_address_1.id,
+                "address_id": cls.res_partner_address_1.id,
                 "guarantee_limit": fields.Date.today(),
                 "invoice_method": "none",
                 "user_id": False,
-                "product_id": self.product_product_3.id,
-                "product_uom": self.env.ref("uom.product_uom_unit").id,
-                "partner_invoice_id": self.res_partner_address_1.id,
-                "location_id": self.stock_warehouse.lot_stock_id.id,
+                "product_id": cls.product_product_3.id,
+                "product_uom": cls.env.ref("uom.product_uom_unit").id,
+                "partner_invoice_id": cls.res_partner_address_1.id,
+                "location_id": cls.stock_warehouse.lot_stock_id.id,
                 "operations": [
                     (
                         0,
                         0,
                         {
-                            "location_dest_id": self.product_product_11.property_stock_production.id,
-                            "location_id": self.stock_warehouse.lot_stock_id.id,
-                            "name": self.product_product_11.get_product_multiline_description_sale(),
-                            "product_id": self.product_product_11.id,
-                            "product_uom": self.env.ref("uom.product_uom_unit").id,
+                            "location_dest_id": cls.product_product_11.property_stock_production.id,
+                            "location_id": cls.stock_warehouse.lot_stock_id.id,
+                            "name": cls.product_product_11.get_product_multiline_description_sale(),
+                            "product_id": cls.product_product_11.id,
+                            "product_uom": cls.env.ref("uom.product_uom_unit").id,
                             "product_uom_qty": 1.0,
                             "price_unit": 50.0,
                             "state": "draft",
                             "type": "add",
-                            "company_id": self.env.company.id,
+                            "company_id": cls.env.company.id,
                         },
                     )
                 ],
@@ -231,44 +243,44 @@ class TestAccountMoveLineRepairInfo(TransactionCase):
                         0,
                         0,
                         {
-                            "name": self.product_service_order_repair.get_product_multiline_description_sale(),
-                            "product_id": self.product_service_order_repair.id,
+                            "name": cls.product_service_order_repair.get_product_multiline_description_sale(),
+                            "product_id": cls.product_service_order_repair.id,
                             "product_uom_qty": 1.0,
-                            "product_uom": self.env.ref("uom.product_uom_unit").id,
+                            "product_uom": cls.env.ref("uom.product_uom_unit").id,
                             "price_unit": 50.0,
-                            "company_id": self.env.company.id,
+                            "company_id": cls.env.company.id,
                         },
                     )
                 ],
-                "partner_id": self.res_partner_12.id,
+                "partner_id": cls.res_partner_12.id,
             }
         )
 
-        self.repair0 = self.env["repair.order"].create(
+        cls.repair0 = cls.env["repair.order"].create(
             {
-                "product_id": self.product_product_5.id,
-                "product_uom": self.env.ref("uom.product_uom_unit").id,
-                "address_id": self.res_partner_address_1.id,
+                "product_id": cls.product_product_5.id,
+                "product_uom": cls.env.ref("uom.product_uom_unit").id,
+                "address_id": cls.res_partner_address_1.id,
                 "guarantee_limit": fields.Date.today(),
                 "invoice_method": "after_repair",
                 "user_id": False,
-                "partner_invoice_id": self.res_partner_address_1.id,
-                "location_id": self.stock_warehouse.lot_stock_id.id,
+                "partner_invoice_id": cls.res_partner_address_1.id,
+                "location_id": cls.stock_warehouse.lot_stock_id.id,
                 "operations": [
                     (
                         0,
                         0,
                         {
-                            "location_dest_id": self.product_product_12.property_stock_production.id,
-                            "location_id": self.stock_warehouse.lot_stock_id.id,
-                            "name": self.product_product_12.get_product_multiline_description_sale(),
+                            "location_dest_id": cls.product_product_12.property_stock_production.id,
+                            "location_id": cls.stock_warehouse.lot_stock_id.id,
+                            "name": cls.product_product_12.get_product_multiline_description_sale(),
                             "price_unit": 50.0,
-                            "product_id": self.product_product_12.id,
-                            "product_uom": self.env.ref("uom.product_uom_unit").id,
+                            "product_id": cls.product_product_12.id,
+                            "product_uom": cls.env.ref("uom.product_uom_unit").id,
                             "product_uom_qty": 1.0,
                             "state": "draft",
                             "type": "add",
-                            "company_id": self.env.company.id,
+                            "company_id": cls.env.company.id,
                         },
                     )
                 ],
@@ -277,44 +289,44 @@ class TestAccountMoveLineRepairInfo(TransactionCase):
                         0,
                         0,
                         {
-                            "name": self.product_service_order_repair.get_product_multiline_description_sale(),
-                            "product_id": self.product_service_order_repair.id,
+                            "name": cls.product_service_order_repair.get_product_multiline_description_sale(),
+                            "product_id": cls.product_service_order_repair.id,
                             "product_uom_qty": 1.0,
-                            "product_uom": self.env.ref("uom.product_uom_unit").id,
+                            "product_uom": cls.env.ref("uom.product_uom_unit").id,
                             "price_unit": 50.0,
-                            "company_id": self.env.company.id,
+                            "company_id": cls.env.company.id,
                         },
                     )
                 ],
-                "partner_id": self.res_partner_12.id,
+                "partner_id": cls.res_partner_12.id,
             }
         )
 
-        self.repair2 = self.env["repair.order"].create(
+        cls.repair2 = cls.env["repair.order"].create(
             {
-                "product_id": self.product_product_6.id,
-                "product_uom": self.env.ref("uom.product_uom_unit").id,
-                "address_id": self.res_partner_address_1.id,
+                "product_id": cls.product_product_6.id,
+                "product_uom": cls.env.ref("uom.product_uom_unit").id,
+                "address_id": cls.res_partner_address_1.id,
                 "guarantee_limit": fields.Date.today(),
                 "invoice_method": "b4repair",
                 "user_id": False,
-                "partner_invoice_id": self.res_partner_address_1.id,
-                "location_id": self.stock_location_14.id,
+                "partner_invoice_id": cls.res_partner_address_1.id,
+                "location_id": cls.stock_location_14.id,
                 "operations": [
                     (
                         0,
                         0,
                         {
-                            "location_dest_id": self.product_product_13.property_stock_production.id,
-                            "location_id": self.stock_warehouse.lot_stock_id.id,
-                            "name": self.product_product_13.get_product_multiline_description_sale(),
+                            "location_dest_id": cls.product_product_13.property_stock_production.id,
+                            "location_id": cls.stock_warehouse.lot_stock_id.id,
+                            "name": cls.product_product_13.get_product_multiline_description_sale(),
                             "price_unit": 50.0,
-                            "product_id": self.product_product_13.id,
-                            "product_uom": self.env.ref("uom.product_uom_unit").id,
+                            "product_id": cls.product_product_13.id,
+                            "product_uom": cls.env.ref("uom.product_uom_unit").id,
                             "product_uom_qty": 1.0,
                             "state": "draft",
                             "type": "add",
-                            "company_id": self.env.company.id,
+                            "company_id": cls.env.company.id,
                         },
                     )
                 ],
@@ -323,20 +335,20 @@ class TestAccountMoveLineRepairInfo(TransactionCase):
                         0,
                         0,
                         {
-                            "name": self.product_service_order_repair.get_product_multiline_description_sale(),
-                            "product_id": self.product_service_order_repair.id,
+                            "name": cls.product_service_order_repair.get_product_multiline_description_sale(),
+                            "product_id": cls.product_service_order_repair.id,
                             "product_uom_qty": 1.0,
-                            "product_uom": self.env.ref("uom.product_uom_unit").id,
+                            "product_uom": cls.env.ref("uom.product_uom_unit").id,
                             "price_unit": 50.0,
-                            "company_id": self.env.company.id,
+                            "company_id": cls.env.company.id,
                         },
                     )
                 ],
-                "partner_id": self.res_partner_12.id,
+                "partner_id": cls.res_partner_12.id,
             }
         )
 
-        self.env.user.groups_id |= self.env.ref("stock.group_stock_user")
+        cls.env.user.groups_id |= cls.env.ref("stock.group_stock_user")
 
     def test_move_line_repair_info(self):
         self.product_product_3.write({"categ_id": self.categ_real.id})
@@ -367,7 +379,7 @@ class TestAccountMoveLineRepairInfo(TransactionCase):
             "active_model": "repair.order",
             "active_ids": repairs.ids,
         }
-        res = make_invoice.with_context(context=context).make_invoices()
+        res = make_invoice.with_context(**context).make_invoices()
         invoices = res.get("domain", []) and self.am_model.browse(
             res.get("domain", [])[0][2]
         )
