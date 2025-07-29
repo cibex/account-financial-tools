@@ -6,74 +6,76 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2025-07-29 13:34+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: account_dashboard_banner
 #: model:ir.model.fields.selection,name:account_dashboard_banner.selection__account_dashboard_banner_cell__warn_type__above
 msgid "Above Maximum"
-msgstr ""
+msgstr "Oltre il massimo"
 
 #. module: account_dashboard_banner
 #: model:ir.model,name:account_dashboard_banner.model_account_dashboard_banner_cell
 msgid "Accounting Dashboard Banner Cell"
-msgstr ""
+msgstr "Cella del banner della bacheca di contabilità"
 
 #. module: account_dashboard_banner
 #: model:ir.model.fields.selection,name:account_dashboard_banner.selection__account_dashboard_banner_cell__cell_type__fiscalyear_lock_date
 msgid "All Users Lock Date"
-msgstr ""
+msgstr "Tutte le date di blocco utenti"
 
 #. module: account_dashboard_banner
 #: model:ir.model.fields.selection,name:account_dashboard_banner.selection__account_dashboard_banner_cell__warn_type__inside
 msgid "Between Minimum and Maximum"
-msgstr ""
+msgstr "Tra minimo e massimo"
 
 #. module: account_dashboard_banner
 #: model:ir.model.fields,field_description:account_dashboard_banner.field_account_dashboard_banner_cell__cell_type
 msgid "Cell Type"
-msgstr ""
+msgstr "Tipo cella"
 
 #. module: account_dashboard_banner
 #: model:ir.model.fields,field_description:account_dashboard_banner.field_account_dashboard_banner_cell__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: account_dashboard_banner
 #: model:ir.model.fields,field_description:account_dashboard_banner.field_account_dashboard_banner_cell__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #. module: account_dashboard_banner
 #: model:ir.model.fields,field_description:account_dashboard_banner.field_account_dashboard_banner_cell__custom_label
 msgid "Custom Label"
-msgstr ""
+msgstr "Etichetta personalizzata"
 
 #. module: account_dashboard_banner
 #: model_terms:ir.ui.view,arch_db:account_dashboard_banner.account_dashboard_banner_cell_form
 #: model_terms:ir.ui.view,arch_db:account_dashboard_banner.account_dashboard_banner_cell_list
 msgid "Custom Label (optional)"
-msgstr ""
+msgstr "Etichetta personalizzata (opzionale)"
 
 #. module: account_dashboard_banner
 #: model:ir.model.fields,field_description:account_dashboard_banner.field_account_dashboard_banner_cell__custom_tooltip
 msgid "Custom Tooltip"
-msgstr ""
+msgstr "Descrizione personalizzata"
 
 #. module: account_dashboard_banner
 #: model_terms:ir.ui.view,arch_db:account_dashboard_banner.account_dashboard_banner_cell_form
 msgid "Custom Tooltip (optional)"
-msgstr ""
+msgstr "Descrizione personalizzata (opzionale)"
 
 #. module: account_dashboard_banner
 #: model:ir.model.fields.selection,name:account_dashboard_banner.selection__account_dashboard_banner_cell__cell_type__customer_debt
 msgid "Customer Debt"
-msgstr ""
+msgstr "Debito cliente"
 
 #. module: account_dashboard_banner
 #: model:ir.model.fields.selection,name:account_dashboard_banner.selection__account_dashboard_banner_cell__cell_type__customer_overdue
