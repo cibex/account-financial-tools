@@ -50,6 +50,7 @@ addon | version | maintainers | summary
 [account_move_force_removal](account_move_force_removal/) | 15.0.1.1.1 |  | Allow force removal account moves
 [account_move_line_menu](account_move_line_menu/) | 15.0.1.0.0 |  | Adds a Journal Items menu
 [account_move_line_purchase_info](account_move_line_purchase_info/) | 15.0.1.1.1 |  | Introduces the purchase order line to the journal items
+[account_move_line_repair_info](account_move_line_repair_info/) | 15.0.1.0.0 |  | Introduces the repair order to the journal items
 [account_move_line_residual](account_move_line_residual/) | 15.0.1.0.1 |  | Display residual amount in move line view
 [account_move_line_sale_info](account_move_line_sale_info/) | 15.0.1.0.3 |  | Introduces the purchase order line to the journal items
 [account_move_line_tax_editable](account_move_line_tax_editable/) | 15.0.1.0.2 |  | Allows to edit taxes on non-posted account move lines
