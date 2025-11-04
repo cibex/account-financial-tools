@@ -202,7 +202,10 @@ class AccountDashboardBannerCell(models.Model):
         accounts = self.env["ir.property"]._get(
             "property_account_receivable_id", "res.partner"
         )
-        if hasattr(company, "account_default_pos_receivable_account_id"):
+        if (
+            hasattr(company, "account_default_pos_receivable_account_id")
+            and company.account_default_pos_receivable_account_id
+        ):
             accounts |= company.account_default_pos_receivable_account_id
         return (accounts, 1, False, False)
 
