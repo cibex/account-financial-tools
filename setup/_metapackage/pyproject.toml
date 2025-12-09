@@ -1,0 +1,11 @@
+[project]
+name = "odoo-addons-oca-account-financial-tools"
+version = "19.0.20251209.0"
+dependencies = [
+    "odoo-addon-account_move_post_date_user==19.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 19.0",
+]
