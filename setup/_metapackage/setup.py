@@ -48,6 +48,7 @@ setuptools.setup(
         'odoo-addon-account_move_transfer_partner>=16.0dev,<16.1dev',
         'odoo-addon-account_netting>=16.0dev,<16.1dev',
         'odoo-addon-account_partner_required>=16.0dev,<16.1dev',
+        'odoo-addon-account_reversal>=16.0dev,<16.1dev',
         'odoo-addon-account_sequence_option>=16.0dev,<16.1dev',
         'odoo-addon-account_spread_cost_revenue>=16.0dev,<16.1dev',
         'odoo-addon-account_template_active>=16.0dev,<16.1dev',
