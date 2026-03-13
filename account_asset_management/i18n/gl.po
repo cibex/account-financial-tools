@@ -25,7 +25,7 @@ msgstr ""
 "Project-Id-Version: account-financial-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-10 23:23+0000\n"
-"PO-Revision-Date: 2026-03-13 17:48+0000\n"
+"PO-Revision-Date: 2026-03-13 18:36+0000\n"
 "Last-Translator: Cándido Martínez <candido@supermercadoscooperativos.com>\n"
 "Language-Team: Galician (http://www.transifex.com/oca/OCA-account-financial-"
 "tools-8-0/language/gl/)\n"
@@ -676,18 +676,18 @@ msgstr "Base amortización"
 #. module: account_asset_management
 #: model_terms:ir.ui.view,arch_db:account_asset_management.account_asset_view_form
 msgid "Depreciation Board"
-msgstr ""
+msgstr "Táboa de amortización"
 
 #. module: account_asset_management
 #: model:ir.model.fields,field_description:account_asset_management.field_account_asset_report__depreciation_date
 msgid "Depreciation Date"
-msgstr ""
+msgstr "Data de amortizació"
 
 #. module: account_asset_management
 #: model_terms:ir.ui.view,arch_db:account_asset_management.account_asset_profile_view_form
 #: model_terms:ir.ui.view,arch_db:account_asset_management.account_asset_view_form
 msgid "Depreciation Dates"
-msgstr ""
+msgstr "Datas de amortización"
 
 #. module: account_asset_management
 #: model:ir.model.fields,field_description:account_asset_management.field_account_asset_line__move_id
@@ -1339,7 +1339,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_asset_management.field_account_asset__purchase_value
 #, python-format
 msgid "Purchase Value"
-msgstr ""
+msgstr "Valor de compra"
 
 #. module: account_asset_management
 #. odoo-python
@@ -1648,7 +1648,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_asset_management.field_account_asset__method_time
 #: model:ir.model.fields,field_description:account_asset_management.field_account_asset_profile__method_time
 msgid "Time Method"
-msgstr ""
+msgstr "Método de tempo"
 
 #. module: account_asset_management
 #. odoo-python
