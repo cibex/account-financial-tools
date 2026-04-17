@@ -6,7 +6,7 @@ import logging
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import _, api, fields, models
+from odoo import Command, _, api, fields, models
 from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
@@ -319,7 +319,7 @@ class AccountAssetRemove(models.TransientModel):
                 "partner_id": partner_id,
                 "asset_id": asset.id,
             }
-            move_lines.append((0, 0, move_line_vals))
+            move_lines.append(Command.create(move_line_vals))
 
         depreciation_base_comp = currency.compare_amounts(asset.depreciation_base, 0)
         move_line_vals = {
@@ -330,7 +330,7 @@ class AccountAssetRemove(models.TransientModel):
             "partner_id": partner_id,
             "asset_id": asset.id,
         }
-        move_lines.append((0, 0, move_line_vals))
+        move_lines.append(Command.create(move_line_vals))
 
         if self.posting_regime == "residual_value" and residual_value:
             move_line_vals = {
@@ -342,7 +342,7 @@ class AccountAssetRemove(models.TransientModel):
                 "partner_id": partner_id,
                 "asset_id": asset.id,
             }
-            move_lines.append((0, 0, move_line_vals))
+            move_lines.append(Command.create(move_line_vals))
         elif self.posting_regime == "gain_loss_on_sale":
             if self.sale_value:
                 sale_value = self.sale_value
@@ -355,7 +355,7 @@ class AccountAssetRemove(models.TransientModel):
                     "partner_id": partner_id,
                     "asset_id": asset.id,
                 }
-                move_lines.append((0, 0, move_line_vals))
+                move_lines.append(Command.create(move_line_vals))
             balance = self.sale_value - residual_value
             balance_comp = currency.compare_amounts(balance, 0)
             account_id = (
@@ -372,5 +372,5 @@ class AccountAssetRemove(models.TransientModel):
                 "partner_id": partner_id,
                 "asset_id": asset.id,
             }
-            move_lines.append((0, 0, move_line_vals))
+            move_lines.append(Command.create(move_line_vals))
         return move_lines
