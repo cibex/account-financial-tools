@@ -647,7 +647,7 @@ msgstr "Aggiornare i record?"
 
 #. module: account_chart_update
 #: model:ir.model.fields,field_description:account_chart_update.field_wizard_update_charts_accounts__update_tax_group
-msgid "Update taxe groups"
+msgid "Update tax groups"
 msgstr "Aggiorna gruppi imposte"
 
 #. module: account_chart_update
