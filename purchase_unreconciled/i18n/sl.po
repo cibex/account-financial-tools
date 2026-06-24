@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-24 05:14+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,43 +15,44 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_order__amount_unreconciled
 msgid "Amount Unreconciled"
-msgstr ""
+msgstr "Neusklajeni znesek"
 
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.purchase_unreconciled_exceeded_wizard
 msgid "Amount Unreconciled exceeded"
-msgstr ""
+msgstr "Neusklajeni znesek prekoračen"
 
 #. module: purchase_unreconciled
 #. odoo-python
 #: code:addons/purchase_unreconciled/models/account_move_line.py:0
 msgid "Automatic writeoff"
-msgstr ""
+msgstr "Samodejni odpis"
 
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.purchase_unreconciled_exceeded_wizard
 msgid "Cancel"
-msgstr ""
+msgstr "Prekliči"
 
 #. module: purchase_unreconciled
 #. odoo-python
 #: code:addons/purchase_unreconciled/models/account_move_line.py:0
 msgid "Cannot write-off more than one account"
-msgstr ""
+msgstr "Ni mogoče odpisati več kot enega konta"
 
 #. module: purchase_unreconciled
 #: model:ir.model,name:purchase_unreconciled.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Družbe"
 
 #. module: purchase_unreconciled
 #: model:ir.model,name:purchase_unreconciled.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Nastavitve"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__continue_method
@@ -60,22 +62,22 @@ msgstr ""
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Ustvaril"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__exception_msg
 msgid "Exception Msg"
-msgstr ""
+msgstr "Sporočilo ob izjemi"
 
 #. module: purchase_unreconciled
 #. odoo-python
@@ -84,11 +86,15 @@ msgid ""
 "Finance Warning: \n"
 "Unreconciled amount is too high. Total unreconciled amount: %(amount_unreconciled)s Maximum unreconciled amount accepted: %(amount_allowed)s "
 msgstr ""
+"Finančno opozorilo: \n"
+"Neusklajeni znesek je previsok. Skupni neusklajeni znesek: %"
+"(amount_unreconciled)s Najvišji dovoljeni neusklajeni znesek: %"
+"(amount_allowed)s "
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,help:purchase_unreconciled.field_purchase_order__unreconciled
@@ -96,36 +102,39 @@ msgid ""
 "Indicates that a Purchase Order has related Journal items not reconciled.\n"
 "Note that if it is false it can be either that everything is reconciled or that the related accounts do not allow reconciliation"
 msgstr ""
+"Označuje, da ima naročilo povezane postavke, ki niso usklajene.\n"
+"Upoštevajte, da če je vrednost 'false', to lahko pomeni, da je vse usklajeno "
+"ali pa da povezani konti ne omogočajo usklajevanja"
 
 #. module: purchase_unreconciled
 #: model:ir.model,name:purchase_unreconciled.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Dnevniška postavka"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji posodobil"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.purchase_unreconciled_exceeded_wizard
 msgid "Lock and Reconcile"
-msgstr ""
+msgstr "Zakleni in uskladi"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__origin_reference
 msgid "Object"
-msgstr ""
+msgstr "Objekt"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__purchase_id
 msgid "Order Number"
-msgstr ""
+msgstr "Številka naročila"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,help:purchase_unreconciled.field_res_company__purchase_reconcile_tolerance
@@ -134,6 +143,8 @@ msgid ""
 "Percentage of tolerance of residual amount vs total amount of the Purchase "
 "Order. Leave zero to accept all discrepancies"
 msgstr ""
+"Odstotek dopustnega odstopanja med preostalo količino in skupno količino iz "
+"nabavnega naloga. Če želite sprejeti vsa odstopanja, vnesite vrednost nič"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_company__purchase_lock_auto_reconcile
@@ -144,7 +155,7 @@ msgstr ""
 #. module: purchase_unreconciled
 #: model:ir.model,name:purchase_unreconciled.model_purchase_order
 msgid "Purchase Order"
-msgstr ""
+msgstr "Nabavni nalog"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_company__purchase_reconcile_tolerance
@@ -155,7 +166,7 @@ msgstr ""
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.res_config_settings_view_form
 msgid "Purchase Reconciling"
-msgstr ""
+msgstr "Usklajevanje nabave"
 
 #. module: purchase_unreconciled
 #: model:ir.model,name:purchase_unreconciled.model_purchase_unreconciled_exceeded_wiz
@@ -176,7 +187,7 @@ msgstr ""
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.purchase_order_form
 msgid "Reconcile"
-msgstr ""
+msgstr "Uskladi"
 
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.res_config_settings_view_form
@@ -187,12 +198,12 @@ msgstr ""
 #. odoo-python
 #: code:addons/purchase_unreconciled/models/purchase_order.py:0
 msgid "Reconciled journal items"
-msgstr ""
+msgstr "Usklajene dnevniške postavke"
 
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.purchase_unreconciled_exceeded_wizard
 msgid "The order has exceeded its amount unreconciled"
-msgstr ""
+msgstr "Nalog je presegel svoj neusklajeni znesek"
 
 #. module: purchase_unreconciled
 #. odoo-python
@@ -206,18 +217,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_order__unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.purchase_order_view_search
 msgid "Unreconciled"
-msgstr ""
+msgstr "Neusklajeno"
 
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.purchase_order_form
 msgid "Unreconciled Journal Items"
-msgstr ""
+msgstr "Neusklajene dnevniške postavke"
 
 #. module: purchase_unreconciled
 #. odoo-python
 #: code:addons/purchase_unreconciled/models/purchase_order.py:0
 msgid "Unsupported search operator"
-msgstr ""
+msgstr "Nepodprt operator za iskanje"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_company__purchase_reconcile_account_id
