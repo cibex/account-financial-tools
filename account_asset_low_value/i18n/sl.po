@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-24 05:07+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,22 +15,23 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_asset_low_value
 #: model:ir.model,name:account_asset_low_value.model_account_asset
 msgid "Asset"
-msgstr ""
+msgstr "Osnovno sredstvo"
 
 #. module: account_asset_low_value
 #: model_terms:ir.ui.view,arch_db:account_asset_low_value.asset_low_value_remove_form
 msgid "Cancel"
-msgstr ""
+msgstr "Prekliči"
 
 #. module: account_asset_low_value
 #: model:ir.model.fields,field_description:account_asset_low_value.field_account_asset__low_value
 #: model_terms:ir.ui.view,arch_db:account_asset_low_value.account_asset_view_search
 msgid "Low Value Asset"
-msgstr ""
+msgstr "Sredstvo z nizko vrednostjo"
 
 #. module: account_asset_low_value
 #: model:ir.model.fields,help:account_asset_low_value.field_account_asset__low_value
@@ -39,20 +41,27 @@ msgid ""
 "2. Number of Years = 0 years\n"
 "In essense, the low value asset is not really and asset but an expense tracked as asset, as such, it has no residual value. And when removed, only status is changed (no accounting entry)."
 msgstr ""
+"Sredstva z nizko vrednostjo (LVA) so opredeljena, kadar je v profilu "
+"sredstva določeno:\n"
+"1. Račun sredstva = Odhodek (sredstvo z nizko vrednostjo)\n"
+"2. Število let = 0 let\n"
+"V bistvu sredstvo z nizko vrednostjo ni pravo sredstvo, temveč odhodek, ki "
+"se evidentira kot sredstvo; kot takšno nima preostale vrednosti. Ob "
+"odstranitvi se spremeni le status (brez računovodskega vpisa)."
 
 #. module: account_asset_low_value
 #: model_terms:ir.ui.view,arch_db:account_asset_low_value.account_asset_view_search
 msgid "Normal Asset"
-msgstr ""
+msgstr "Običajno sredstvo"
 
 #. module: account_asset_low_value
 #: model:ir.model,name:account_asset_low_value.model_account_asset_remove
 #: model_terms:ir.ui.view,arch_db:account_asset_low_value.asset_low_value_remove_form
 msgid "Remove Asset"
-msgstr ""
+msgstr "Odstrani sredstvo"
 
 #. module: account_asset_low_value
 #. odoo-python
 #: code:addons/account_asset_low_value/models/account_asset.py:0
 msgid "Remove Low Value Asset"
-msgstr ""
+msgstr "Odstrani sredstvo z nizko vrednostjo"
