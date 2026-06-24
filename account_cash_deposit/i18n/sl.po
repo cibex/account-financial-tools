@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-24 05:31+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_cash_deposit
 #. odoo-python
@@ -27,16 +29,18 @@ msgid ""
 "'%s%s' % (object.display_name.replace(' ', '_'), object.state == 'draft' and"
 " '-draft' or '')"
 msgstr ""
+"'%s%s' % (object.display_name.replace(' ', '_'), object.state == 'draft' and "
+"'-draft' or '')"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "<strong>Currency:</strong>"
-msgstr ""
+msgstr "<strong>Valuta:</strong>"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "<strong>Date:</strong>"
-msgstr ""
+msgstr "<strong>Datum:</strong>"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
@@ -46,12 +50,12 @@ msgstr ""
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "<strong>Order Date:</strong>"
-msgstr ""
+msgstr "<strong>Datum naročila:</strong>"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "<strong>Total:</strong>"
-msgstr ""
+msgstr "<strong>Skupaj:</strong>"
 
 #. module: account_cash_deposit
 #: model:ir.model.constraint,message:account_cash_deposit.constraint_account_cash_deposit_name_company_unique
@@ -67,58 +71,58 @@ msgstr ""
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Potrebno ukrepanje"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__active
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__activity_ids
 msgid "Activities"
-msgstr ""
+msgstr "Aktivnosti"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr ""
+msgstr "Dekoracija izjeme"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__activity_state
 msgid "Activity State"
-msgstr ""
+msgstr "Stanje aktivnosti"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__activity_type_icon
 msgid "Activity Type Icon"
-msgstr ""
+msgstr "Ikona tipa aktivnosti"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.cash_unit_form
 msgid "Archived"
-msgstr ""
+msgstr "Arhivirano"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Št. priponk"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__auto_create
 msgid "Auto Create"
-msgstr ""
+msgstr "Samodejno ustvari"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_form
 msgid "Back to Draft"
-msgstr ""
+msgstr "Vrni v osnutek"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__bank_journal_id
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_search
 msgid "Bank Account"
-msgstr ""
+msgstr "Bančni račun"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
@@ -133,17 +137,17 @@ msgstr ""
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "Bank:"
-msgstr ""
+msgstr "Banka:"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__cash_unit__auto_create__both
 msgid "Both"
-msgstr ""
+msgstr "Oboje"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_order_reception_form
 msgid "Cancel"
-msgstr ""
+msgstr "Prekliči"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__cash_journal_id
@@ -239,7 +243,7 @@ msgstr ""
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__company_id
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_order_reception_form
@@ -249,13 +253,13 @@ msgstr ""
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_form
 msgid "Confirm Order"
-msgstr ""
+msgstr "Potrdi nalog"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__account_cash_deposit__state__confirmed
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_search
 msgid "Confirmed"
-msgstr ""
+msgstr "Potrjeno"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__create_uid
@@ -263,7 +267,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_order_reception__create_uid
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Ustvaril"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__create_date
@@ -271,7 +275,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_order_reception__create_date
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: account_cash_deposit
 #: model:ir.model,name:account_cash_deposit.model_res_currency
@@ -281,18 +285,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__currency_id
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_search
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__date
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_search
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__cash_unit__auto_create__deposit
 msgid "Deposit"
-msgstr ""
+msgstr "Polog"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__display_name
@@ -300,34 +304,34 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_order_reception__display_name
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__account_cash_deposit__state__done
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_search
 msgid "Done"
-msgstr ""
+msgstr "Opravljeno"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__account_cash_deposit__state__draft
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_search
 msgid "Draft"
-msgstr ""
+msgstr "Osnutek"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Sledilci"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Sledilci (partnerji)"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "Font awesome ikona, npr. fa-tasks"
 
 #. module: account_cash_deposit
 #. odoo-python
@@ -338,12 +342,12 @@ msgstr ""
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_search
 msgid "Group By"
-msgstr ""
+msgstr "Združi po"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Vsebuje sporočilo"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__id
@@ -351,27 +355,29 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_order_reception__id
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__activity_exception_icon
 msgid "Icon"
-msgstr ""
+msgstr "Ikona"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Ikona za prikaz izjem pri aktivnostih."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Če je označeno, nova sporočila zahtevajo vašo pozornost."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__message_has_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
+"Kadar je označeno, pomeni, da je pri nekaterih sporočilih prišlo do napake "
+"pri dostavi."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_cash_unit__auto_create
@@ -390,12 +396,12 @@ msgstr ""
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Je sledilec"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__move_id
 msgid "Journal Entry"
-msgstr ""
+msgstr "Temeljnica"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__write_uid
@@ -403,7 +409,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_order_reception__write_uid
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji posodobil"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__write_date
@@ -411,12 +417,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_order_reception__write_date
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__line_ids
 msgid "Lines"
-msgstr ""
+msgstr "Postavke"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__coin_amount
@@ -426,69 +432,69 @@ msgstr ""
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Napaka ob dostavi sporočila"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Sporočila"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr ""
+msgstr "Rok mojih aktivnosti"
 
 #. module: account_cash_deposit
 #. odoo-python
 #: code:addons/account_cash_deposit/models/account_cash_deposit.py:0
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "Rok naslednje aktivnosti"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__activity_summary
 msgid "Next Activity Summary"
-msgstr ""
+msgstr "Povzetek naslednje aktivnosti"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__activity_type_id
 msgid "Next Activity Type"
-msgstr ""
+msgstr "Tip naslednje aktivnosti"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__cash_unit__cash_type__note
 msgid "Note"
-msgstr ""
+msgstr "Opomba"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__notes
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_form
 msgid "Notes"
-msgstr ""
+msgstr "Opombe"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Število ukrepov"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Število napak"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Število sporočil, ki zahtevajo ukrepanje"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Število sporočil, ki niso bila pravilno dostavljena"
 
 #. module: account_cash_deposit
 #. odoo-python
@@ -501,58 +507,58 @@ msgstr ""
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__operation_type
 msgid "Operation Type"
-msgstr ""
+msgstr "Tip operacije"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__cash_unit__auto_create__order
 msgid "Order"
-msgstr ""
+msgstr "Nalog"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__order_date
 msgid "Order Date"
-msgstr ""
+msgstr "Datum naročila"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit_line__parent_id
 msgid "Parent"
-msgstr ""
+msgstr "Nadrejeni"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_form
 msgid "Print"
-msgstr ""
+msgstr "Natisni"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit_line__qty
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "Quantity"
-msgstr ""
+msgstr "Količina"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__is_reconcile
 msgid "Reconciled"
-msgstr ""
+msgstr "Usklajeno"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__name
 msgid "Reference"
-msgstr ""
+msgstr "Sklic"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Odgovorni uporabnik"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_search
 msgid "State"
-msgstr ""
+msgstr "Stanje"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__state
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__activity_state
@@ -562,12 +568,16 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+"Status glede na aktivnosti\n"
+"Prekoračeno: rok izvedbe je že prekoračen\n"
+"Danes: Datum aktivnosti je današnji dan\n"
+"Planirano: Bodoče aktivnosti."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit_line__subtotal
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "Subtotal"
-msgstr ""
+msgstr "Vmesni seštevek"
 
 #. module: account_cash_deposit
 #. odoo-python
@@ -630,12 +640,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__total_amount
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_order_reception__total_amount
 msgid "Total Amount"
-msgstr ""
+msgstr "Skupni znesek"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__total_value
 msgid "Total Value"
-msgstr ""
+msgstr "Vrednost skupaj"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit_line__tree_order
@@ -646,12 +656,12 @@ msgstr ""
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__cash_type
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
+msgstr "Tip izjeme pri aktivnosti na zapisu."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__date
@@ -661,22 +671,22 @@ msgstr ""
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_form
 msgid "Validate"
-msgstr ""
+msgstr "Potrdi"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__value
 msgid "Value"
-msgstr ""
+msgstr "Vrednost"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Sporočila spletne strani"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Kronologija komunikacij spletne strani"
 
 #. module: account_cash_deposit
 #. odoo-python
