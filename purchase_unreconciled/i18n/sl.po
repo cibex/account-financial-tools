@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-24 05:14+0000\n"
+"PO-Revision-Date: 2026-06-24 05:18+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -57,7 +57,7 @@ msgstr "Nastavitve"
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__continue_method
 msgid "Continue Method"
-msgstr ""
+msgstr "Metoda nadaljevanja"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_unreconciled_exceeded_wiz__create_uid
@@ -150,7 +150,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_company__purchase_lock_auto_reconcile
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_config_settings__purchase_lock_auto_reconcile
 msgid "Purchase Lock Auto Reconcile"
-msgstr ""
+msgstr "Samodejno usklajevanje ob zaklepu nabavnega naloga"
 
 #. module: purchase_unreconciled
 #: model:ir.model,name:purchase_unreconciled.model_purchase_order
@@ -161,7 +161,7 @@ msgstr "Nabavni nalog"
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_company__purchase_reconcile_tolerance
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_config_settings__purchase_reconcile_tolerance
 msgid "Purchase Reconcile Tolerance (%)"
-msgstr ""
+msgstr "Toleranca usklajevanja nabavnega naloga (%)"
 
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.res_config_settings_view_form
@@ -171,18 +171,18 @@ msgstr "Usklajevanje nabave"
 #. module: purchase_unreconciled
 #: model:ir.model,name:purchase_unreconciled.model_purchase_unreconciled_exceeded_wiz
 msgid "Purchase Unreconciled Exceeded Wizard"
-msgstr ""
+msgstr "Čarovnik za prekoračeno neusklajeno nabavo"
 
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.purchase_order_view_search
 msgid "Purchase orders with unreconciled journal items."
-msgstr ""
+msgstr "Nabavni nalogi z neusklajenimi dnevniškimi postavkami."
 
 #. module: purchase_unreconciled
 #. odoo-python
 #: code:addons/purchase_unreconciled/wizards/purchase_unreconciled_exceeded.py:0
 msgid "Purchase unreconciled exceeded"
-msgstr ""
+msgstr "Prekoračena neusklajena nabava"
 
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.purchase_order_form
@@ -192,7 +192,7 @@ msgstr "Uskladi"
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.res_config_settings_view_form
 msgid "Reconcile PO upon locking"
-msgstr ""
+msgstr "Uskladi nabavni nalog ob zaklepu"
 
 #. module: purchase_unreconciled
 #. odoo-python
@@ -212,6 +212,8 @@ msgid ""
 "The write-off account and journal for purchases is missing. An accountant "
 "must fill that information"
 msgstr ""
+"Odpisni konto in dnevnik za nabave manjkata. Računovodja mora vpisati te "
+"podatke"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_purchase_order__unreconciled
@@ -234,21 +236,21 @@ msgstr "Nepodprt operator za iskanje"
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_company__purchase_reconcile_account_id
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_config_settings__purchase_reconcile_account_id
 msgid "Write-Off Account On Purchases"
-msgstr ""
+msgstr "Odpisni konto za nabave"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,help:purchase_unreconciled.field_res_company__purchase_reconcile_account_id
 #: model:ir.model.fields,help:purchase_unreconciled.field_res_config_settings__purchase_reconcile_account_id
 msgid "Write-off account to reconcile Unreconciled Purchase Orders"
-msgstr ""
+msgstr "Odpisni konto za usklajevanje neusklajenih nabavnih nalogov"
 
 #. module: purchase_unreconciled
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_company__purchase_reconcile_journal_id
 #: model:ir.model.fields,field_description:purchase_unreconciled.field_res_config_settings__purchase_reconcile_journal_id
 msgid "WriteOff Journal for Purchases"
-msgstr ""
+msgstr "Dnevnik odpisov za nabave"
 
 #. module: purchase_unreconciled
 #: model_terms:ir.ui.view,arch_db:purchase_unreconciled.unreconciled_amount_purchase_order_view_tree
 msgid "sum_ar"
-msgstr ""
+msgstr "sum_ar"
