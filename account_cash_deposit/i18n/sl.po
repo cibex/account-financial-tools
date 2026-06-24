@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-24 05:31+0000\n"
+"PO-Revision-Date: 2026-06-24 05:37+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -21,7 +21,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/account_cash_deposit/models/account_cash_deposit.py:0
 msgid "%s has already been credited/debited on the bank account."
-msgstr ""
+msgstr "%s je že knjižen v dobro/breme na bančnem računu."
 
 #. module: account_cash_deposit
 #: model:ir.actions.report,print_report_name:account_cash_deposit.report_account_cash_deposit
@@ -45,7 +45,7 @@ msgstr "<strong>Datum:</strong>"
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "<strong>Loose Coins:</strong>"
-msgstr ""
+msgstr "<strong>Razsuti kovanci:</strong>"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
@@ -61,12 +61,12 @@ msgstr "<strong>Skupaj:</strong>"
 #: model:ir.model.constraint,message:account_cash_deposit.constraint_account_cash_deposit_name_company_unique
 msgid ""
 "A cash deposit/order with this reference already exists in this company."
-msgstr ""
+msgstr "Gotovinski polog/nalog s tem sklicem že obstaja v tej družbi."
 
 #. module: account_cash_deposit
 #: model:ir.model.constraint,message:account_cash_deposit.constraint_account_cash_deposit_line_cash_unit_unique
 msgid "A line already exists for this cash unit."
-msgstr ""
+msgstr "Postavka za to gotovinsko enoto že obstaja."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_needaction
@@ -127,12 +127,12 @@ msgstr "Bančni račun"
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "Bank Account Number to Credit:"
-msgstr ""
+msgstr "Številka bančnega računa v dobro:"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "Bank Account Number to Debit:"
-msgstr ""
+msgstr "Številka bančnega računa v breme:"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
@@ -153,57 +153,57 @@ msgstr "Prekliči"
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__cash_journal_id
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_search
 msgid "Cash Box"
-msgstr ""
+msgstr "Gotovinska blagajna"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__account_cash_deposit__operation_type__deposit
 msgid "Cash Deposit"
-msgstr ""
+msgstr "Gotovinski polog"
 
 #. module: account_cash_deposit
 #: model:ir.model,name:account_cash_deposit.model_account_cash_deposit_line
 msgid "Cash Deposit Lines"
-msgstr ""
+msgstr "Postavke gotovinskega pologa"
 
 #. module: account_cash_deposit
 #: model:ir.actions.report,name:account_cash_deposit.report_account_cash_deposit
 #: model:ir.model,name:account_cash_deposit.model_account_cash_deposit
 msgid "Cash Deposit/Order"
-msgstr ""
+msgstr "Gotovinski polog/nalog"
 
 #. module: account_cash_deposit
 #: model:ir.actions.act_window,name:account_cash_deposit.account_cash_deposit_action
 #: model:ir.ui.menu,name:account_cash_deposit.account_cash_deposit_menu
 msgid "Cash Deposits"
-msgstr ""
+msgstr "Gotovinski pologi"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_order_reception__order_id
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__account_cash_deposit__operation_type__order
 msgid "Cash Order"
-msgstr ""
+msgstr "Gotovinski nalog"
 
 #. module: account_cash_deposit
 #: model:ir.actions.act_window,name:account_cash_deposit.account_cash_order_reception_action
 #: model:ir.model,name:account_cash_deposit.model_account_cash_order_reception
 msgid "Cash Order Reception"
-msgstr ""
+msgstr "Prejem gotovine"
 
 #. module: account_cash_deposit
 #: model:ir.actions.act_window,name:account_cash_deposit.account_cash_order_action
 #: model:ir.ui.menu,name:account_cash_deposit.account_cash_order_menu
 msgid "Cash Orders"
-msgstr ""
+msgstr "Gotovinski nalogi"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_form
 msgid "Cash Received"
-msgstr ""
+msgstr "Gotovina prejeta"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_order_reception__date
 msgid "Cash Reception Date"
-msgstr ""
+msgstr "Datum prejema gotovine"
 
 #. module: account_cash_deposit
 #: model:ir.actions.act_window,name:account_cash_deposit.cash_unit_action
@@ -211,34 +211,34 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit_line__cash_unit_id
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.report_cashdeposit
 msgid "Cash Unit"
-msgstr ""
+msgstr "Gotovinska enota"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_res_currency__cash_unit_ids
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.view_currency_form
 msgid "Cash Units"
-msgstr ""
+msgstr "Gotovinske enote"
 
 #. module: account_cash_deposit
 #. odoo-python
 #: code:addons/account_cash_deposit/wizards/account_cash_order_reception.py:0
 msgid "Cash reception confirmed on %s."
-msgstr ""
+msgstr "Prejem gotovine potrjen %s."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__cash_unit__cash_type__coin
 msgid "Coin"
-msgstr ""
+msgstr "Kovanec"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__coinroll_qty
 msgid "Coin Quantity"
-msgstr ""
+msgstr "Količina kovancev"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields.selection,name:account_cash_deposit.selection__cash_unit__cash_type__coinroll
 msgid "Coin Roll"
-msgstr ""
+msgstr "Rola kovancev"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__company_id
@@ -248,7 +248,7 @@ msgstr "Družba"
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_order_reception_form
 msgid "Confirm Cash Reception"
-msgstr ""
+msgstr "Potrdi prejem gotovine"
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_form
@@ -337,7 +337,7 @@ msgstr "Font awesome ikona, npr. fa-tasks"
 #. odoo-python
 #: code:addons/account_cash_deposit/models/cash_unit.py:0
 msgid "For a coin roll, the coin quantity must be strictly positive."
-msgstr ""
+msgstr "Pri roli kovancev mora biti količina kovancev strogo pozitivna."
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_search
@@ -385,6 +385,8 @@ msgid ""
 "If set, a line for this cash unit will be created by default on a new cash "
 "deposit or a new cash order or both."
 msgstr ""
+"Če je nastavljeno, bo postavka za to gotovinsko enoto privzeto ustvarjena ob "
+"novem gotovinskem pologu, novem gotovinskem nalogu ali obeh."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__coin_amount
@@ -392,6 +394,8 @@ msgid ""
 "If your bank has a coin counting machine, enter the total amount of coins "
 "counted by the machine instead of creating a line for each type of coin."
 msgstr ""
+"Če ima vaša banka stroj za štetje kovancev, vnesite skupni znesek kovancev, "
+"preštetih s strojem, namesto da ustvarite postavko za vsako vrsto kovancev."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_is_follower
@@ -427,7 +431,7 @@ msgstr "Postavke"
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__coin_amount
 msgid "Loose Coin Amount"
-msgstr ""
+msgstr "Znesek razsutih kovancev"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__message_has_error
@@ -503,6 +507,8 @@ msgid ""
 "On %(deposit)s, the cash journal %(cash_journal)s is not in the selected "
 "currency %(currency)s."
 msgstr ""
+"Pri %(deposit)s gotovinska blagajna %(cash_journal)s ni v izbrani valuti %"
+"(currency)s."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__operation_type
@@ -583,51 +589,51 @@ msgstr "Vmesni seštevek"
 #. odoo-python
 #: code:addons/account_cash_deposit/models/account_cash_deposit.py:0
 msgid "The %s is not in draft state, so you cannot delete it."
-msgstr ""
+msgstr "%s ni v stanju osnutka, zato ga ne morete izbrisati."
 
 #. module: account_cash_deposit
 #. odoo-python
 #: code:addons/account_cash_deposit/wizards/account_cash_order_reception.py:0
 msgid "The Cash Reception Date (%s) is in the future."
-msgstr ""
+msgstr "Datum prejema gotovine (%s) je v prihodnosti."
 
 #. module: account_cash_deposit
 #. odoo-python
 #: code:addons/account_cash_deposit/models/account_cash_deposit.py:0
 msgid "The Inter-Banks Transfer Account is not configured."
-msgstr ""
+msgstr "Konto medbančnega prenosa ni nastavljen."
 
 #. module: account_cash_deposit
 #: model:ir.model.constraint,message:account_cash_deposit.constraint_cash_unit_coinroll_qty_positive
 msgid "The coin quantity must be positive."
-msgstr ""
+msgstr "Količina kovancev mora biti pozitivna."
 
 #. module: account_cash_deposit
 #: model:ir.model.constraint,message:account_cash_deposit.constraint_account_cash_deposit_coin_amount_positive
 msgid "The loose coin amount must be positive or null."
-msgstr ""
+msgstr "Znesek razsutih kovancev mora biti pozitiven ali nič."
 
 #. module: account_cash_deposit
 #: model:ir.model.constraint,message:account_cash_deposit.constraint_account_cash_deposit_line_qty_positive
 msgid "The quantity must be positive or null."
-msgstr ""
+msgstr "Količina mora biti pozitivna ali nič."
 
 #. module: account_cash_deposit
 #. odoo-python
 #: code:addons/account_cash_deposit/models/account_cash_deposit.py:0
 msgid "The total amount of %s is zero."
-msgstr ""
+msgstr "Skupni znesek %s je nič."
 
 #. module: account_cash_deposit
 #: model:ir.model.constraint,message:account_cash_deposit.constraint_cash_unit_value_positive
 msgid "The value must be strictly positive."
-msgstr ""
+msgstr "Vrednost mora biti strogo pozitivna."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_cash_unit__cash_type
 #: model:ir.model.fields,help:account_cash_deposit.field_cash_unit__coinroll_qty
 msgid "This field should never be modified."
-msgstr ""
+msgstr "To polje se ne sme spreminjati."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_cash_unit__value
@@ -635,6 +641,8 @@ msgid ""
 "This field should never be modified. For a coin roll, you must enter the "
 "value of the coin."
 msgstr ""
+"To polje se ne sme spreminjati. Pri roli kovancev morate vnesti vrednost "
+"kovanca."
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit__total_amount
@@ -651,7 +659,7 @@ msgstr "Vrednost skupaj"
 #: model:ir.model.fields,field_description:account_cash_deposit.field_account_cash_deposit_line__tree_order
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__tree_order
 msgid "Tree Order"
-msgstr ""
+msgstr "Vrstni red v drevesu"
 
 #. module: account_cash_deposit
 #: model:ir.model.fields,field_description:account_cash_deposit.field_cash_unit__cash_type
@@ -666,7 +674,7 @@ msgstr "Tip izjeme pri aktivnosti na zapisu."
 #. module: account_cash_deposit
 #: model:ir.model.fields,help:account_cash_deposit.field_account_cash_deposit__date
 msgid "Used as date for the journal entry."
-msgstr ""
+msgstr "Uporablja se kot datum za temeljnico."
 
 #. module: account_cash_deposit
 #: model_terms:ir.ui.view,arch_db:account_cash_deposit.account_cash_deposit_form
@@ -694,3 +702,4 @@ msgstr "Kronologija komunikacij spletne strani"
 msgid ""
 "You must delete cash lines that are linked to a currency other than %s."
 msgstr ""
+"Izbrisati morate gotovinske postavke, ki so povezane z drugo valuto kot %s."
