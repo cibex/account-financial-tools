@@ -788,15 +788,43 @@ class AccountAsset(models.Model):
         if self.prorata:
             if firstyear:
                 depreciation_date_start = self.date_start
-                fy_date_stop = entry["date_stop"]
-                first_fy_asset_days = (fy_date_stop - depreciation_date_start).days + 1
-                first_fy_duration = self._get_fy_duration(fy, option="days")
+                if self.method_period == "month":
+                    # TODO manage quarter
+                    first_day_period = depreciation_date_start.replace(day=1)
+                    first_day_next_period = first_day_period + relativedelta(months=1)
+                    current_full_period_days = first_day_next_period - first_day_period
+                    current_partial_period_days = (
+                        first_day_next_period - depreciation_date_start
+                    )
+                    # compute a ratio of the first period of the asset
+                    # (example 14/07 would be 17/31=0.548)
+                    current_period_ratio = (
+                        current_partial_period_days / current_full_period_days
+                    )
+                    # get the number of period (month) until end of first fy
+                    # (not counting the first partial month)
+                    remaining_fy_duration = (
+                        (fy.date_to.year - first_day_next_period.year) * 12
+                        + (fy.date_to.month - first_day_next_period.month)
+                        + 1
+                    )
+                    first_fy_duration = self._get_fy_duration(fy, option="months")
+                    # ratio of first fiscal year using month
+                    duration_first_fy_ratio = (
+                        float(current_period_ratio + remaining_fy_duration)
+                        / first_fy_duration
+                    )
+                else:
+                    fy_date_stop = entry["date_stop"]
+                    first_fy_asset_days = (
+                        fy_date_stop - depreciation_date_start
+                    ).days + 1
+                    first_fy_duration = self._get_fy_duration(fy, option="days")
+                    duration_first_fy_ratio = (
+                        float(first_fy_asset_days) / first_fy_duration
+                    )
                 first_fy_year_factor = self._get_fy_duration(fy, option="years")
-                duration_factor = (
-                    float(first_fy_asset_days)
-                    / first_fy_duration
-                    * first_fy_year_factor
-                )
+                duration_factor = duration_first_fy_ratio * first_fy_year_factor
             else:
                 duration_factor = self._get_fy_duration(fy, option="years")
         else:

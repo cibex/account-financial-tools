@@ -3,9 +3,8 @@
 # Copyright 2021 Tecnativa - João Marques
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import calendar
 import time
-from datetime import date, datetime
+from datetime import datetime
 
 from odoo import Command, fields
 from odoo.exceptions import UserError
@@ -305,27 +304,13 @@ class TestAssetManagement(AccountTestInvoicingCommon):
         )
         asset.compute_depreciation_board()
         asset.invalidate_recordset()
-        if calendar.isleap(date.today().year):
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[1].amount, 46.44, places=2
-            )
-        else:
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[1].amount, 47.33, places=2
-            )
+        self.assertAlmostEqual(asset.depreciation_line_ids[1].amount, 44.8, places=2)
         self.assertAlmostEqual(asset.depreciation_line_ids[2].amount, 55.55, places=2)
         self.assertAlmostEqual(asset.depreciation_line_ids[3].amount, 55.55, places=2)
         self.assertAlmostEqual(asset.depreciation_line_ids[4].amount, 55.55, places=2)
         self.assertAlmostEqual(asset.depreciation_line_ids[5].amount, 55.55, places=2)
         self.assertAlmostEqual(asset.depreciation_line_ids[6].amount, 55.55, places=2)
-        if calendar.isleap(date.today().year):
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[-1].amount, 9.11, places=2
-            )
-        else:
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[-1].amount, 8.22, places=2
-            )
+        self.assertAlmostEqual(asset.depreciation_line_ids[-1].amount, 10.75, places=2)
 
     def test_03_proprata_init_prev_year(self):
         """Prorata temporis depreciation with init value in prev year."""
@@ -360,26 +345,12 @@ class TestAssetManagement(AccountTestInvoicingCommon):
         self.assertAlmostEqual(asset.value_depreciated, 325.08, places=2)
         # check computed values in the depreciation board
         self.assertAlmostEqual(asset.depreciation_line_ids[3].amount, 55.55, places=2)
-        if calendar.isleap(date.today().year - 1):
-            # for leap years the first year depreciation amount of 325.08
-            # is too high and hence a correction is applied to the next
-            # entry of the table
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[2].amount, 54.66, places=2
-            )
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[3].amount, 55.55, places=2
-            )
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[-1].amount, 9.11, places=2
-            )
-        else:
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[2].amount, 55.55, places=2
-            )
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[-1].amount, 8.22, places=2
-            )
+        # depreciation amount of 325.08
+        # is too high and hence a correction is applied to the next
+        # entry of the table
+        self.assertAlmostEqual(asset.depreciation_line_ids[2].amount, 53.02, places=2)
+        self.assertAlmostEqual(asset.depreciation_line_ids[3].amount, 55.55, places=2)
+        self.assertAlmostEqual(asset.depreciation_line_ids[-1].amount, 10.75, places=2)
 
     def test_04_prorata_init_cur_year(self):
         """Prorata temporis depreciation with init value in curent year."""
@@ -411,23 +382,10 @@ class TestAssetManagement(AccountTestInvoicingCommon):
         # check the depreciated value is the initial value
         self.assertAlmostEqual(asset.value_depreciated, 279.44, places=2)
         # check computed values in the depreciation board
-        if calendar.isleap(date.today().year):
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[2].amount, 44.75, places=2
-            )
-        else:
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[2].amount, 45.64, places=2
-            )
+        # compensate first period with the delta due to init_entry
+        self.assertAlmostEqual(asset.depreciation_line_ids[2].amount, 43.11, places=2)
         self.assertAlmostEqual(asset.depreciation_line_ids[3].amount, 55.55, places=2)
-        if calendar.isleap(date.today().year):
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[-1].amount, 9.11, places=2
-            )
-        else:
-            self.assertAlmostEqual(
-                asset.depreciation_line_ids[-1].amount, 8.22, places=2
-            )
+        self.assertAlmostEqual(asset.depreciation_line_ids[-1].amount, 10.75, places=2)
 
     def test_05_degressive_linear(self):
         """Degressive-Linear with annual and quarterly depreciation."""
