@@ -51,7 +51,7 @@ addon | version | maintainers | summary
 [account_move_fiscal_year](account_move_fiscal_year/) | 16.0.1.0.0 |  | Display the fiscal year on journal entries/item
 [account_move_line_check_number](account_move_line_check_number/) | 16.0.1.0.1 | <a href='https://github.com/ps-tubtim'><img src='https://github.com/ps-tubtim.png' width='32' height='32' style='border-radius:50%;' alt='ps-tubtim'/></a> | Add the check number in the journal items
 [account_move_line_landed_cost_info](account_move_line_landed_cost_info/) | 16.0.1.0.0 |  | Introduces the landed cost adjustment lines to the journal items
-[account_move_line_purchase_info](account_move_line_purchase_info/) | 16.0.2.0.0 |  | Introduces the purchase order line to the journal items
+[account_move_line_purchase_info](account_move_line_purchase_info/) | 16.0.2.1.0 |  | Introduces the purchase order line to the journal items
 [account_move_line_repair_info](account_move_line_repair_info/) | 16.0.1.0.0 |  | Introduces the repair order to the journal items
 [account_move_line_sale_info](account_move_line_sale_info/) | 16.0.1.1.0 |  | Introduces the purchase order line to the journal items
 [account_move_line_tax_editable](account_move_line_tax_editable/) | 16.0.1.0.1 |  | Allows to edit taxes on non-posted account move lines
