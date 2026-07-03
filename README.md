@@ -53,7 +53,7 @@ addon | version | maintainers | summary
 [account_move_line_landed_cost_info](account_move_line_landed_cost_info/) | 16.0.1.0.0 |  | Introduces the landed cost adjustment lines to the journal items
 [account_move_line_purchase_info](account_move_line_purchase_info/) | 16.0.2.0.0 |  | Introduces the purchase order line to the journal items
 [account_move_line_repair_info](account_move_line_repair_info/) | 16.0.1.0.0 |  | Introduces the repair order to the journal items
-[account_move_line_sale_info](account_move_line_sale_info/) | 16.0.1.0.0 |  | Introduces the purchase order line to the journal items
+[account_move_line_sale_info](account_move_line_sale_info/) | 16.0.1.1.0 |  | Introduces the purchase order line to the journal items
 [account_move_line_tax_editable](account_move_line_tax_editable/) | 16.0.1.0.1 |  | Allows to edit taxes on non-posted account move lines
 [account_move_name_sequence](account_move_name_sequence/) | 16.0.1.1.12 | <a href='https://github.com/alexis-via'><img src='https://github.com/alexis-via.png' width='32' height='32' style='border-radius:50%;' alt='alexis-via'/></a> <a href='https://github.com/moylop260'><img src='https://github.com/moylop260.png' width='32' height='32' style='border-radius:50%;' alt='moylop260'/></a> <a href='https://github.com/luisg123v'><img src='https://github.com/luisg123v.png' width='32' height='32' style='border-radius:50%;' alt='luisg123v'/></a> | Generate journal entry number from sequence
 [account_move_post_date_user](account_move_post_date_user/) | 16.0.1.0.0 | <a href='https://github.com/JordiMForgeFlow'><img src='https://github.com/JordiMForgeFlow.png' width='32' height='32' style='border-radius:50%;' alt='JordiMForgeFlow'/></a> | Trace journal entry posting date and user.
