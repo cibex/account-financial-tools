@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-23 03:37+0000\n"
-"PO-Revision-Date: 2026-07-05 21:07+0000\n"
+"PO-Revision-Date: 2026-07-05 23:46+0000\n"
 "Last-Translator: Cándido Martínez <candido@supermercadoscooperativos.com>\n"
 "Language-Team: Galician (https://www.transifex.com/oca/teams/23907/gl/)\n"
 "Language: gl\n"
@@ -149,28 +149,28 @@ msgstr "Conciliación"
 #. module: account_reversal
 #: model:ir.model.fields,field_description:account_reversal.field_account_move_reverse_date
 msgid "Reversal Date"
-msgstr ""
+msgstr "Data de reversión"
 
 #. module: account_reversal
 #: model:ir.model.fields,field_description:account_reversal.field_account_move_reversal_id_5678
 msgid "Reversal Entry"
-msgstr ""
+msgstr "Asento revertido"
 
 #. module: account_reversal
 #: model:ir.model.fields,field_description:account_reversal.field_account_move_reverse_journal_id
 msgid "Reversal Journal"
-msgstr ""
+msgstr "Diario de reversión"
 
 #. module: account_reversal
 #: model:ir.ui.view,arch_db:account_reversal.view_account_move_reverse
 msgid "Reverse Entries"
-msgstr ""
+msgstr "Asentos revertidos"
 
 #. module: account_reversal
 #: code:addons/account_reversal/wizard/account_move_reverse.py:58
 #, python-format
 msgid "Reverse moves"
-msgstr ""
+msgstr "Asentos revertidos"
 
 #. module: account_reversal
 #: model:ir.ui.view,arch_db:account_reversal.view_account_move_reverse
@@ -178,18 +178,20 @@ msgid ""
 "This will create reversal for all selected entries whether checked 'to be "
 "reversed' or not."
 msgstr ""
+"Isto creará unha reversión de todos os asentos seleccionados tanto se teñen "
+"o cadro \"A ser revertido\" como se non."
 
 #. module: account_reversal
 #: model:ir.model.fields,field_description:account_reversal.field_account_move_to_be_reversed
 #: model:ir.ui.view,arch_db:account_reversal.view_account_move_filter
 msgid "To Be Reversed"
-msgstr ""
+msgstr "A ser revertido"
 
 #. module: account_reversal
 #: code:addons/account_reversal/models/account_move.py:56
 #, python-format
 msgid "Wrong company Journal is '%s' but we have '%s'"
-msgstr ""
+msgstr "Diario da compañía equivocado é '%s' pero temos '%s'"
 
 #. module: account_reversal
 #: model:ir.ui.view,arch_db:account_reversal.view_account_move_reverse
