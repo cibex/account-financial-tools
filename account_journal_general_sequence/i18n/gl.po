@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-07-05 21:07+0000\n"
+"PO-Revision-Date: 2026-07-05 23:46+0000\n"
 "Last-Translator: Cándido Martínez <candido@supermercadoscooperativos.com>\n"
 "Language-Team: none\n"
 "Language: gl\n"
@@ -156,6 +156,8 @@ msgid ""
 "Renumber account moves up to this day (inclusive). If empty, all moves after"
 " starting date are renumbered."
 msgstr ""
+"Renumerar movementos a partir deste día (incluído). Se está baleiro, todos "
+"os movementos despois do día de inicio serán reenumerados."
 
 #. module: account_journal_general_sequence
 #: model:ir.actions.act_window,name:account_journal_general_sequence.account_move_renumber_wizard_action
