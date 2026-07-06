@@ -52,7 +52,7 @@ addon | version | maintainers | summary
 [account_tax_repartition_line_tax_group_account](account_tax_repartition_line_tax_group_account/) | 17.0.1.0.0 |  | Set a default account from tax group to tax repartition lines
 [account_usability](account_usability/) | 17.0.1.0.0 | <a href='https://github.com/legalsylvain'><img src='https://github.com/legalsylvain.png' width='32' height='32' style='border-radius:50%;' alt='legalsylvain'/></a> | Adds missing menu entries for Account module and adds the option to enable Saxon Accounting
 [mail_template_substitute_account_move](mail_template_substitute_account_move/) | 17.0.1.0.0 | <a href='https://github.com/SodexisTeam'><img src='https://github.com/SodexisTeam.png' width='32' height='32' style='border-radius:50%;' alt='SodexisTeam'/></a> | Module to support Mail Template Substitution for Account Move
-[purchase_unreconciled](purchase_unreconciled/) | 17.0.2.1.0 | <a href='https://github.com/AaronHForgeFlow'><img src='https://github.com/AaronHForgeFlow.png' width='32' height='32' style='border-radius:50%;' alt='AaronHForgeFlow'/></a> | Purchase Unreconciled
+[purchase_unreconciled](purchase_unreconciled/) | 17.0.2.1.1 | <a href='https://github.com/AaronHForgeFlow'><img src='https://github.com/AaronHForgeFlow.png' width='32' height='32' style='border-radius:50%;' alt='AaronHForgeFlow'/></a> | Purchase Unreconciled
 
 [//]: # (end addons)
 
