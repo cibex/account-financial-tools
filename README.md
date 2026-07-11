@@ -47,7 +47,7 @@ addon | version | maintainers | summary
 [account_lock_to_date](account_lock_to_date/) | 18.0.1.0.0 |  | Allows to set an account lock date in the future.
 [account_maturity_date_default](account_maturity_date_default/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Account Maturity Date Default
 [account_move_fiscal_year](account_move_fiscal_year/) | 18.0.1.0.0 |  | Display the fiscal year on journal entries/item
-[account_move_line_purchase_info](account_move_line_purchase_info/) | 18.0.2.0.0 |  | Introduces the purchase order line to the journal items
+[account_move_line_purchase_info](account_move_line_purchase_info/) | 18.0.2.1.0 |  | Introduces the purchase order line to the journal items
 [account_move_line_sale_info](account_move_line_sale_info/) | 18.0.1.0.0 |  | Introduces the purchase order line to the journal items
 [account_move_line_tax_editable](account_move_line_tax_editable/) | 18.0.1.0.0 |  | Allows to edit taxes on non-posted account move lines
 [account_move_name_sequence](account_move_name_sequence/) | 18.0.2.0.1 | <a href='https://github.com/alexis-via'><img src='https://github.com/alexis-via.png' width='32' height='32' style='border-radius:50%;' alt='alexis-via'/></a> <a href='https://github.com/moylop260'><img src='https://github.com/moylop260.png' width='32' height='32' style='border-radius:50%;' alt='moylop260'/></a> <a href='https://github.com/luisg123v'><img src='https://github.com/luisg123v.png' width='32' height='32' style='border-radius:50%;' alt='luisg123v'/></a> | Generate journal entry number from sequence
