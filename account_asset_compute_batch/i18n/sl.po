@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-08-19 02:55+0000\n"
+"PO-Revision-Date: 2026-08-19 03:31+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -45,7 +45,7 @@ msgstr "Ikona tipa aktivnosti"
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,help:account_asset_compute_batch.field_account_asset_compute_batch__date_end
 msgid "All depreciation lines prior to this date will be computed"
-msgstr ""
+msgstr "Obračunane bodo vse amortizacijske postavke pred tem datumom"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch_profile_report__amount
@@ -58,7 +58,7 @@ msgstr "Znesek"
 #: model_terms:ir.ui.view,arch_db:account_asset_compute_batch.search_account_asset_compute_batch_filter
 #: model_terms:ir.ui.view,arch_db:account_asset_compute_batch.view_account_asset_compute_batch_form
 msgid "Asset Compute Batch"
-msgstr ""
+msgstr "Serija obračuna sredstev"
 
 #. module: account_asset_compute_batch
 #: model:ir.actions.server,name:account_asset_compute_batch.ir_cron_auto_compute_draft_batch_ir_actions_server
@@ -66,6 +66,8 @@ msgid ""
 "Asset Compute Batch; Post draft batches with auto_compute set to True up to "
 "today"
 msgstr ""
+"Serija obračuna sredstev; knjiži osnutke serij z omogočenim samodejnim "
+"obračunom do vključno danes"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch_profile_report__profile_id
@@ -85,27 +87,27 @@ msgstr "Št. priponk"
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__auto_compute
 msgid "Auto Compute"
-msgstr ""
+msgstr "Samodejni obračun"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,help:account_asset_compute_batch.field_account_asset_compute_batch__auto_compute
 msgid "Auto compute draft batches with 'Date' up to today, by cron job"
-msgstr ""
+msgstr "Načrtovano opravilo samodejno obračuna osnutke serij z datumom do danes"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute__batch_name
 msgid "Batch Name"
-msgstr ""
+msgstr "Naziv serije"
 
 #. module: account_asset_compute_batch
 #: model_terms:ir.ui.view,arch_db:account_asset_compute_batch.search_account_asset_compute_batch_filter
 msgid "Batch Number"
-msgstr ""
+msgstr "Številka serije"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.constraint,message:account_asset_compute_batch.constraint_account_asset_compute_batch_name_uniq
 msgid "Batch name must be unique!"
-msgstr ""
+msgstr "Naziv serije mora biti enoličen!"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__company_id
@@ -121,7 +123,7 @@ msgstr "Izračunaj"
 #: model:ir.actions.act_window,name:account_asset_compute_batch.account_asset_compute_batch_action
 #: model:ir.ui.menu,name:account_asset_compute_batch.account_asset_compute_batch_menu
 msgid "Compute Asset Batch"
-msgstr ""
+msgstr "Obračun serije sredstev"
 
 #. module: account_asset_compute_batch
 #: model:ir.model,name:account_asset_compute_batch.model_account_asset_compute
@@ -138,12 +140,12 @@ msgstr "Napake pri obdelavi sredstev"
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch_profile_report__compute_batch_id
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_move_line__compute_batch_id
 msgid "Compute Batch"
-msgstr ""
+msgstr "Obračunska serija"
 
 #. module: account_asset_compute_batch
 #: model:ir.model,name:account_asset_compute_batch.model_account_asset_compute_batch
 msgid "Compute Depreciation Batch"
-msgstr ""
+msgstr "Serija obračuna amortizacije"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields.selection,name:account_asset_compute_batch.selection__account_asset_compute_batch__state__computed
@@ -153,7 +155,7 @@ msgstr "Izračunano"
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute__use_batch
 msgid "Create Batch"
-msgstr ""
+msgstr "Ustvari serijo"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__create_uid
@@ -177,6 +179,8 @@ msgid ""
 "Dalay account posting of newly created journaly entries, by setting "
 "auto_post='at_date', to be posted by cron job"
 msgstr ""
+"Odloži knjiženje novo ustvarjenih temeljnic z nastavitvijo "
+"auto_post='at_date', da jih knjiži načrtovano opravilo"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__date_end
@@ -186,32 +190,32 @@ msgstr "Datum"
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute__delay_compute
 msgid "Delay Compute Asset"
-msgstr ""
+msgstr "Odloži obračun sredstev"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__delay_post
 msgid "Delay Posting"
-msgstr ""
+msgstr "Odloži knjiženje"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__depre_amount
 msgid "Depreciation Amount"
-msgstr ""
+msgstr "Znesek amortizacije"
 
 #. module: account_asset_compute_batch
 #: model:ir.model,name:account_asset_compute_batch.model_account_asset_compute_batch_profile_report
 msgid "Depreciation Amount by Profile"
-msgstr ""
+msgstr "Znesek amortizacije po profilu"
 
 #. module: account_asset_compute_batch
 #: model_terms:ir.ui.view,arch_db:account_asset_compute_batch.view_account_asset_compute_batch_form
 msgid "Depreciation By Profile"
-msgstr ""
+msgstr "Amortizacija po profilu"
 
 #. module: account_asset_compute_batch
 #: model_terms:ir.ui.view,arch_db:account_asset_compute_batch.view_account_asset_compute_batch_form
 msgid "Depreciations"
-msgstr ""
+msgstr "Amortizacije"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute__description
@@ -238,6 +242,9 @@ msgid ""
 "\n"
 "%(tb)s"
 msgstr ""
+"Napaka pri obdelavi serij %(batch_ref)s: \n"
+"\n"
+"%(tb)s"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields.selection,name:account_asset_compute_batch.selection__account_asset_compute_batch__state__exception
@@ -248,7 +255,7 @@ msgstr "Izjema"
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__note
 msgid "Exception Error"
-msgstr ""
+msgstr "Napaka pri izjemi"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__message_follower_ids
@@ -289,7 +296,7 @@ msgstr "Ikona za prikaz izjem pri aktivnostih."
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,help:account_asset_compute_batch.field_account_asset_compute__batch_name
 msgid "If batch name is specified, computation will be tracked by a batch"
-msgstr ""
+msgstr "Če je naveden naziv serije, bo obračun spremljan v seriji"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,help:account_asset_compute_batch.field_account_asset_compute_batch__message_needaction
@@ -405,18 +412,18 @@ msgstr "Število sporočil, ki niso bila pravilno dostavljena"
 #. odoo-python
 #: code:addons/account_asset_compute_batch/models/account_asset_compute_batch.py:0
 msgid "Only draft batch can be deleted!"
-msgstr ""
+msgstr "Izbrisati je mogoče samo serijo v osnutku!"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__profile_report
 msgid "Profile Report"
-msgstr ""
+msgstr "Poročilo po profilih"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute__profile_ids
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__profile_ids
 msgid "Profiles"
-msgstr ""
+msgstr "Profili sredstev"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__activity_user_id
@@ -427,6 +434,8 @@ msgstr "Odgovorni uporabnik"
 #: model:ir.model.fields,help:account_asset_compute_batch.field_account_asset_compute_batch__profile_ids
 msgid "Selected asset to run depreciation. Run all profiles if left blank."
 msgstr ""
+"Izberite profile sredstev za obračun amortizacije. Če pustite prazno, se "
+"obračunajo vsi profili."
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__state
@@ -459,7 +468,7 @@ msgstr "Tip izjeme pri aktivnosti na zapisu."
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,help:account_asset_compute_batch.field_account_asset_compute__use_batch
 msgid "Use batch opton"
-msgstr ""
+msgstr "Uporabi možnost serije"
 
 #. module: account_asset_compute_batch
 #: model:ir.model.fields,field_description:account_asset_compute_batch.field_account_asset_compute_batch__website_message_ids
