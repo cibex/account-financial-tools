@@ -507,7 +507,7 @@ class TestAccountChartUpdate(TestAccountChartUpdateCommon):
 
     def test_15_diff_note_commands_count_mismatch(self):
         """When template and DB disagree on the number of repartition lines,
-        the detail surfaces `N record(s) → M record(s)` rather than a
+        the detail surfaces `N record(s) to be created` rather than a
         per-line breakdown."""
         wizard = self.wizard_obj.with_company(self.company).create(self.wizard_vals)
         tax = self._get_record_for_xml_id("sale_tax_template")
@@ -522,7 +522,7 @@ class TestAccountChartUpdate(TestAccountChartUpdateCommon):
             [("model", "=", "account.tax"), ("name", "=", "repartition_line_ids")]
         )
         note = wizard.diff_notes(trimmed, tax)
-        self.assertRegex(note, r"\d+ record\(s\) → \d+ record\(s\)")
+        self.assertRegex(note, r"\d+ record\(s\) to be created")
 
     def test_16_m2m_command_link_branch(self):
         """Drift must be detected when the template value is expressed with
@@ -653,70 +653,6 @@ class TestAccountChartUpdate(TestAccountChartUpdateCommon):
         )
         self.assertIn(f"tag_ids [∅] → [{tag.display_name}]", detail)
 
-    def test_20_diff_note_commands_branches(self):
-        """`_diff_note_commands` counts SET/LINK/CREATE correctly and picks
-        the right branch: count mismatch, per-line detail, or generic
-        fallback."""
-        wizard = self.wizard_obj.with_company(self.company).create(self.wizard_vals)
-        tax = self._get_record_for_xml_id("sale_tax_template")
-        field = tax._fields["repartition_line_ids"]
-        actual = tax.repartition_line_ids
-        # SET branch — expected_count = len(cmd[2]); DB has 4 lines, template says 8.
-        synthetic = [
-            999_001,
-            999_002,
-            999_003,
-            999_004,
-            999_005,
-            999_006,
-            999_007,
-            999_008,
-        ]
-        result = wizard._diff_note_commands(field, actual, [Command.set(synthetic)])
-        self.assertEqual(
-            result,
-            f"{len(actual)} record(s) → {len(synthetic)} record(s)",
-        )
-        # LINK branch — two LINK commands count as 2 (so count mismatch again).
-        result = wizard._diff_note_commands(
-            field, actual, [Command.link(999_001), Command.link(999_002)]
-        )
-        self.assertIn(f"{len(actual)} record(s) → 2 record(s)", result)
-        # CREATE branch with same count and a real sub-diff → per-line format.
-        # Build a template with the same count as actual but with a drifted
-        # factor_percent on the first line.
-        template_lines = [
-            Command.create(
-                {
-                    "repartition_type": r.repartition_type,
-                    "document_type": r.document_type,
-                    "factor_percent": r.factor_percent,
-                }
-            )
-            for r in actual
-        ]
-        # Flip factor_percent on the first line from 100 → 42 to force drift.
-        template_lines[0][2]["factor_percent"] = 42.0
-        result = wizard._diff_note_commands(field, actual, template_lines)
-        self.assertIn("#1:", result)
-        self.assertIn("factor_percent", result)
-        # Same count, no drift at all → generic fallback message.
-        template_lines_nodiff = [
-            Command.create(
-                {
-                    "repartition_type": r.repartition_type,
-                    "document_type": r.document_type,
-                    "factor_percent": r.factor_percent,
-                }
-            )
-            for r in actual
-        ]
-        result = wizard._diff_note_commands(field, actual, template_lines_nodiff)
-        self.assertEqual(
-            result,
-            f"{len(actual)} record(s) → differs from template",
-        )
-
     def test_21_diff_note_m2o_branches(self):
         """`_diff_note_m2o` renders actual/expected display names whether
         the template value is an xmlid string, an int database id, or
@@ -763,19 +699,20 @@ class TestAccountChartUpdate(TestAccountChartUpdateCommon):
         actual = tax.repartition_line_ids
         self.assertGreaterEqual(len(actual), 4)
         # Build a template that flips factor_percent on every line → 4+
-        # differing sub-records, but the renderer should only list 3.
+        # differing sub-records, and the renderer list all of them.
         template_lines = [
-            Command.create(
+            Command.update(
+                r.id,
                 {
                     "repartition_type": r.repartition_type,
                     "document_type": r.document_type,
                     "factor_percent": (r.factor_percent or 0) + 1,
-                }
+                },
             )
             for r in actual
         ]
         result = wizard._diff_note_commands(field, actual, template_lines)
-        self.assertEqual(result.count("#"), 3)
+        self.assertEqual(result.count("#"), 4)
 
     def test_23_account_group_code_prefix_end_drift_note(self):
         """When the template's code_prefix_end differs from the DB, the

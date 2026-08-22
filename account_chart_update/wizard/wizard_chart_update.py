@@ -28,6 +28,17 @@ O2M_FIELDS_EXCEPTION = {
 UNCHECKED_FIELDS = {
     "account.fiscal.position": ["sequence"],
 }
+# For one2many records that require matching by keys, specify them here
+O2M_MATCH_KEYS = {
+    "account.tax": {
+        "repartition_line_ids": [
+            "document_type",
+            "factor_percent",
+            "repartition_type",
+            "account_id",
+        ],
+    }
+}
 
 
 # HACK https://github.com/odoo/odoo/pull/234333
@@ -648,21 +659,38 @@ class WizardUpdateChartsAccounts(models.TransientModel):
                     result[key] = record_value
                 continue
             elif field.ttype == "one2many":
+                match_keys = O2M_MATCH_KEYS.get(field.model, {}).get(field.name, [])
+                if match_keys:
+                    real_value = real_value.sorted(",".join(match_keys))
+
+                    def match_cmp(n, match_keys, field):
+                        vals = []
+                        for key in match_keys:
+                            val = n[2].get(key, False)
+                            subfield = self.env[field.relation]._fields[key]
+                            if val and subfield.type == "many2one":
+                                val = self.env.ref(
+                                    f"account.{self.company_id.id}_{val}", False
+                                )
+                            vals.append(val)
+                        return vals
+
+                    # We assume we will find only 0 commands (CREATE)
+                    record_value = sorted(
+                        record_value,
+                        key=lambda n, match_keys=match_keys, field=field: match_cmp(
+                            n, match_keys, field
+                        ),
+                    )
                 if len(record_value) != len(real_value):
+                    # TODO: Try to add only missing ones
                     result[key] = [(5, 0, 0)] + record_value
                 else:
-                    for key2, record_value_item in enumerate(record_value):
-                        res_item = self.diff_fields(
-                            record_value_item[2], real_value[key2]
-                        )
-                        if len(res_item) > 0:
-                            # Something has changed in an element, we change everything
-                            # just in case (we do not know for sure that the record we
-                            # are consulting by key is the correct one, for example,
-                            # if it has been deleted by mistake and created again in
-                            # the same way).
-                            result[key] = [(5, 0, 0)] + record_value
-                            break
+                    for i, record_value_item in enumerate(record_value):
+                        res_item = self.diff_fields(record_value_item[2], real_value[i])
+                        if res_item:
+                            result.setdefault(key, [])
+                            result[key].append((1, real_value[i].id, res_item))
                 continue
             # Define correct value if field is translatable
             if field.translate:
@@ -854,40 +882,24 @@ class WizardUpdateChartsAccounts(models.TransientModel):
 
     def _diff_note_commands(self, field, actual, expected_raw):
         """Detail string for an m2m/o2m whose template value is a command list."""
-        actual_count = len(actual)
-        expected_count = 0
-        for cmd in (c for c in expected_raw if isinstance(c, list | tuple) and c):
-            if cmd[0] in (0, 4):  # CREATE / LINK
-                expected_count += 1
-            elif cmd[0] == 6 and len(cmd) >= 3:  # SET
-                expected_count += len(cmd[2])
-        if actual_count != expected_count:
-            return self.env._(
-                "%(actual)s record(s) → %(expected)s record(s)",
-                actual=actual_count,
-                expected=expected_count,
-            )
         sub_diffs = []
-        for idx, cmd in (
-            (i, c)
-            for i, c in enumerate(expected_raw[:actual_count])
-            if isinstance(c, list | tuple) and len(c) >= 3 and isinstance(c[2], dict)
-        ):
+        to_create = len([x for x in expected_raw if x[0] == 0])
+        if to_create:
+            sub_diffs += [self.env._("%s record(s) to be created.", to_create)]
+        for cmd in expected_raw:
+            if cmd[0] != 1:
+                continue
+            record = actual.filtered(lambda x, rec_id=cmd[1]: x.id == rec_id)
             sub_diff = self.with_context(skip_translation_keys=True).diff_fields(
-                cmd[2], actual[idx]
+                cmd[2], record
             )
             diff_keys = sorted(k for k in sub_diff if k != "__translation_module__")
             if diff_keys:
-                detail = self._diff_note_sub_detail(cmd[2], actual[idx], diff_keys)
-                sub_diffs.append(f"#{idx + 1}: {detail}")
-            if len(sub_diffs) >= 3:
-                break
+                detail = self._diff_note_sub_detail(cmd[2], record, diff_keys)
+                sub_diffs.append(f"#{cmd[1]}: {detail}")
         if sub_diffs:
             return "\n    " + "\n    ".join(sub_diffs)
-        return self.env._(
-            "%(n)s record(s) → differs from template",
-            n=actual_count,
-        )
+        return ""
 
     def _diff_note_m2x(self, field, actual, expected_raw):
         """Detail string for an m2m/o2m field."""
