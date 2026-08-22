@@ -5,9 +5,9 @@
 # Copyright 2015 Tecnativa - Antonio Espinosa
 # Copyright 2016 Tecnativa - Jairo Llopis
 # Copyright 2016 Jacques-Etienne Baudoux <je@bcim.be>
-# Copyright 2018 Tecnativa - Pedro M. Baeza
 # Copyright 2020 Noviat - Luc De Meyer
 # Copyright 2024-2025 Tecnativa - Víctor Martínez
+# Copyright 2018,2026 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import logging
@@ -17,6 +17,17 @@ from odoo import Command, api, fields, models, tools
 from odoo.tools.translate import TranslationImporter
 
 _logger = logging.getLogger(__name__)
+
+
+# One2many fields that should be checked in the update
+O2M_FIELDS_EXCEPTION = {
+    "account.tax": ["repartition_line_ids"],
+    "account.fiscal.position": ["account_ids"],
+}
+# Fields that can be checked, but are not marked by default
+UNCHECKED_FIELDS = {
+    "account.fiscal.position": ["sequence"],
+}
 
 
 # HACK https://github.com/odoo/odoo/pull/234333
@@ -153,35 +164,45 @@ class WizardUpdateChartsAccounts(models.TransientModel):
         comodel_name="ir.model.fields",
         relation="wizard_update_charts_tax_group_fields_rel",
         string="Tax group fields",
-        domain=lambda self: self._domain_tax_group_field_ids(),
+        domain=lambda self: [
+            ("id", "in", self._get_fields_per_model("account.tax.group").ids)
+        ],
         default=lambda self: self._default_tax_group_field_ids(),
     )
     tax_field_ids = fields.Many2many(
         comodel_name="ir.model.fields",
         relation="wizard_update_charts_tax_fields_rel",
         string="Tax fields",
-        domain=lambda self: self._domain_tax_field_ids(),
+        domain=lambda self: [
+            ("id", "in", self._get_fields_per_model("account.tax").ids)
+        ],
         default=lambda self: self._default_tax_field_ids(),
     )
     account_field_ids = fields.Many2many(
         comodel_name="ir.model.fields",
         relation="wizard_update_charts_account_fields_rel",
         string="Account fields",
-        domain=lambda self: self._domain_account_field_ids(),
+        domain=lambda self: [
+            ("id", "in", self._get_fields_per_model("account.account").ids)
+        ],
         default=lambda self: self._default_account_field_ids(),
     )
     account_group_field_ids = fields.Many2many(
         comodel_name="ir.model.fields",
         relation="wizard_update_charts_account_group_fields_rel",
         string="Account groups fields",
-        domain=lambda self: self._domain_account_group_field_ids(),
+        domain=lambda self: [
+            ("id", "in", self._get_fields_per_model("account.group").ids)
+        ],
         default=lambda self: self._default_account_group_field_ids(),
     )
     fp_field_ids = fields.Many2many(
         comodel_name="ir.model.fields",
         relation="wizard_update_charts_fp_fields_rel",
         string="Fiscal position fields",
-        domain=lambda self: self._domain_fp_field_ids(),
+        domain=lambda self: [
+            ("id", "in", self._get_fields_per_model("account.fiscal.position").ids)
+        ],
         default=lambda self: self._default_fp_field_ids(),
     )
     tax_group_matching_ids = fields.One2many(
@@ -215,89 +236,55 @@ class WizardUpdateChartsAccounts(models.TransientModel):
         default=lambda self: self._default_fp_matching_ids(),
     )
 
-    def _domain_per_name(self, name):
+    @api.model
+    def _get_fields_per_model(self, model):
+        """Unified method that retrieves the elegible fields per each model. Used for
+        filling the per field selection in the wizard.
+        """
+        domain = [
+            ("model", "=", model),
+            ("name", "not in", tuple(self.fields_to_ignore(model))),
+            ("related", "=", False),
+        ]
+        o2m_exceptions = O2M_FIELDS_EXCEPTION.get(model, [])
+        extra_domain = [("ttype", "!=", "one2many")]
+        if o2m_exceptions:
+            extra_domain = ["|"] + extra_domain + [("name", "in", o2m_exceptions)]
+        fields = self.env["ir.model.fields"].search(domain + extra_domain)
+        # Filter fields that are computed readonly
+        obj = self.env[model]
+        fields = fields.filtered(
+            lambda x, obj=obj: x.name not in obj._fields
+            or not obj._fields[x.name].compute
+            or not obj._fields[x.name].readonly
+        )
+        return fields
+
+    @api.model
+    def _get_default_per_model(self, model):
+        """Unified method called by each default method of the field selection
+        m2m that gets the fields by model and exclude the unchecked ones.
+        """
         return [
-            ("model", "=", name),
-            ("name", "not in", tuple(self.fields_to_ignore(name))),
-        ]
-
-    def _domain_tax_group_field_ids(self):
-        return self._domain_per_name("account.tax.group") + [
-            ("ttype", "!=", "one2many")
-        ]
-
-    def _domain_tax_field_ids(self):
-        # Allow specific o2m fields critical for comparison
-        # (repartition_line_ids) but exclude other o2m
-        return self._domain_per_name("account.tax") + [
-            "|",
-            ("ttype", "!=", "one2many"),
-            (
-                "name",
-                "in",
-                [
-                    "repartition_line_ids",
-                ],
-            ),
-        ]
-
-    def _domain_account_field_ids(self):
-        return self._domain_per_name("account.account") + [("ttype", "!=", "one2many")]
-
-    def _domain_account_group_field_ids(self):
-        return self._domain_per_name("account.group") + [("ttype", "!=", "one2many")]
-
-    def _domain_fp_field_ids(self):
-        return self._domain_per_name("account.fiscal.position") + [
-            "|",
-            ("ttype", "!=", "one2many"),
-            ("name", "in", ["account_ids"]),
+            Command.link(x.id)
+            for x in self._get_fields_per_model(model)
+            if x.name not in UNCHECKED_FIELDS.get(model, [])
         ]
 
     def _default_tax_group_field_ids(self):
-        return [
-            Command.link(x.id)
-            for x in self.env["ir.model.fields"].search(
-                self._domain_tax_group_field_ids()
-                + self.get_uncheck_fields_domain("account.tax.group"),
-            )
-        ]
+        return self._get_default_per_model("account.tax.group")
 
     def _default_tax_field_ids(self):
-        return [
-            Command.link(x.id)
-            for x in self.env["ir.model.fields"].search(
-                self._domain_tax_field_ids()
-                + self.get_uncheck_fields_domain("account.tax"),
-            )
-        ]
+        return self._get_default_per_model("account.tax")
 
     def _default_account_field_ids(self):
-        return [
-            Command.link(x.id)
-            for x in self.env["ir.model.fields"].search(
-                self._domain_account_field_ids()
-                + self.get_uncheck_fields_domain("account.account"),
-            )
-        ]
+        return self._get_default_per_model("account.account")
 
     def _default_account_group_field_ids(self):
-        return [
-            Command.link(x.id)
-            for x in self.env["ir.model.fields"].search(
-                self._domain_account_group_field_ids()
-                + self.get_uncheck_fields_domain("account.group")
-            )
-        ]
+        return self._get_default_per_model("account.group")
 
     def _default_fp_field_ids(self):
-        return [
-            Command.link(x.id)
-            for x in self.env["ir.model.fields"].search(
-                self._domain_fp_field_ids()
-                + self.get_uncheck_fields_domain("account.fiscal.position")
-            )
-        ]
+        return self._get_default_per_model("account.fiscal.position")
 
     def _get_matching_ids(self, model_name, ordered_opts):
         vals = []
@@ -562,22 +549,6 @@ class WizardUpdateChartsAccounts(models.TransientModel):
         return set(models.MAGIC_COLUMNS) | specials
 
     @api.model
-    def get_default_unchecked_fields(self, name):
-        """Get fields that should be unchecked by default for a given model.
-
-        :param str name: The name of the template model.
-        :return set: Fields to uncheck by default.
-        """
-        unchecked_mapping = {
-            "account.fiscal.position": {"sequence"},
-        }
-        return unchecked_mapping.get(name, set())
-
-    def get_uncheck_fields_domain(self, name):
-        unchecked_fields = list(self.get_default_unchecked_fields(name))
-        return [("name", "not in", unchecked_fields)]
-
-    @api.model
     def diff_fields(self, record_values, real):  # noqa: C901
         """Get fields that are different in record values and real records.
 
@@ -592,6 +563,7 @@ class WizardUpdateChartsAccounts(models.TransientModel):
         result = dict()
         ignore = self.fields_to_ignore(real._name)
         field_mapping = {
+            "account.tax.group": self.tax_group_field_ids,
             "account.tax": self.tax_field_ids,
             "account.account": self.account_field_ids,
             "account.group": self.account_group_field_ids,
@@ -601,9 +573,7 @@ class WizardUpdateChartsAccounts(models.TransientModel):
         # If the fields to be queried are not mapped, use all of them
         # (example: account.tax.repartition.line).
         if real._name not in field_mapping:
-            field_mapping[real._name] = self.env["ir.model.fields"].search(
-                self._domain_per_name(real._name)
-            )
+            field_mapping[real._name] = self._get_fields_per_model(real._name)
         fields_by_key = {x.name: x for x in field_mapping[real._name]}
         to_include = field_mapping[real._name].mapped("name")
         for key in record_values.keys():
