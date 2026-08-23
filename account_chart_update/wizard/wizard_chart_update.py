@@ -1307,6 +1307,8 @@ class WizardUpdateChartsAccounts(models.TransientModel):
 
     def _load_data(self, model, data):
         """Process similar to the one in chart template _load() method."""
+        if not data:
+            return
         template = self.env["account.chart.template"].with_context(
             default_company_id=self.company_id.id,
             allowed_company_ids=[self.company_id.id],
@@ -1323,6 +1325,8 @@ class WizardUpdateChartsAccounts(models.TransientModel):
             }
             for xml_id, vals in data.items()
         }
+        if not filtered_data:
+            return
         created_records = template._load_data({model: filtered_data})[model]
         # Make sure all translation data is indexed by XML ID
         translation_data = {}
