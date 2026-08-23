@@ -3,6 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import logging
+from copy import deepcopy
+from unittest.mock import patch
 
 from odoo import Command
 from odoo.tests import tagged
@@ -1081,3 +1083,54 @@ class TestAccountChartUpdate(TestAccountChartUpdateCommon):
         note = wizard.diff_notes(record_values, fp)
         self.assertIn("[fr]", note)
         self.assertIn("Note légale attendue", note)
+
+    def test_31_update_inactive_tax(self):
+        """Deactive a tax that is part of a m2m in other tax to check that is not
+        detected as a change, and to check that the inactive tax is updated.
+        """
+        tax = self._get_record_for_xml_id("sale_tax_template")
+        official_name = tax.name
+        tax.name = "Test 1 tax name changed"
+        tax.active = False
+        wizard = self.wizard_obj.with_company(self.company).create(self.wizard_vals)
+        wizard.action_find_records()
+        # 0% export shouldn't count as updated due to the field `original_tax_ids` not
+        # finding the inactive m2m element
+        self.assertEqual(len(wizard.tax_ids), 1)
+        self.assertEqual(wizard.tax_ids.update_tax_id, tax)
+        self.assertEqual(wizard.tax_ids.type, "updated")
+        wizard.action_update_records()
+        self.assertEqual(wizard.updated_taxes, 1)
+        # The update is done even if the record is inactive
+        self.assertEqual(tax.name, official_name)
+
+    def test_32_update_m2m_with_inactive_tax(self):
+        """Patch the CoA to have a tax deactived, and removed from the m2m of other tax:
+        it should be detected and removed on update even if inactive.
+        """
+        # Patch the CoA to return the sales tax as inactive
+        patcher = patch(
+            "odoo.addons.account.models.chart_template.AccountChartTemplate."
+            "_get_chart_template_data",
+        )
+        mock = patcher.start()
+        patched_coa = deepcopy(self.chart_template_data)
+        patched_coa["account.tax"]["sale_tax_template"]["active"] = False
+        del patched_coa["account.tax"]["sale_export_tax_template"]["original_tax_ids"]
+        mock.return_value = patched_coa
+        # Honor the deactivation of the sales tax and remove it from export tax m2m
+        tax = self._get_record_for_xml_id("sale_tax_template")
+        tax.active = False
+        export_tax = self._get_record_for_xml_id(
+            "sale_export_tax_template"
+        ).with_context(active_test=False)
+        # Do the update and check
+        wizard = self.wizard_obj.with_company(self.company).create(self.wizard_vals)
+        wizard.action_find_records()
+        self.assertEqual(len(wizard.tax_ids), 1)
+        self.assertEqual(wizard.tax_ids.update_tax_id, export_tax)
+        self.assertEqual(wizard.tax_ids.type, "updated")
+        wizard.action_update_records()
+        self.assertEqual(wizard.updated_taxes, 1)
+        self.assertFalse(export_tax.original_tax_ids)
+        patcher.stop()

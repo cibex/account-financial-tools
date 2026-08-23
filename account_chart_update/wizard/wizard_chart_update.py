@@ -1022,8 +1022,8 @@ class WizardUpdateChartsAccounts(models.TransientModel):
                 )
                 record = self.env.ref(full_xmlid, raise_if_not_found=False)
                 if record:
-                    # To read company-dependent fields correctly
-                    return record.with_company(company)
+                    # To read company-dependent fields correctly & m2m inactive records
+                    return record.with_company(company).with_context(active_test=False)
             else:
                 f_name = matching.matching_value
                 if not data.get(f_name):
@@ -1327,6 +1327,7 @@ class WizardUpdateChartsAccounts(models.TransientModel):
             tracking_disable=True,
             delay_account_group_sync=True,
             lang="en_US",
+            active_test=False,
         )
         model_fields = set(self.env[model]._fields)
         filtered_data = {
@@ -1389,7 +1390,7 @@ class WizardUpdateChartsAccounts(models.TransientModel):
         # First create taxes in batch
         data = {}
         for wiz_tax in self.tax_ids:
-            tax = wiz_tax.update_tax_id
+            tax = wiz_tax.update_tax_id.with_context(active_test=False)
             if wiz_tax.type == "deleted":
                 tax.active = False
                 _logger.info(self.env._("Deactivated tax %s."), tax.name)
